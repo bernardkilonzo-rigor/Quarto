@@ -1,13 +1,27 @@
 ---
 title: "Survey Data Analytics"
 author: "Bernard Kilonzo"
+date: "2026-06-26"
 format: html
 editor: visual
 ---
 
 ## Overview
 
-This report analyzes the survey data collected by Rigor Data Solutions regarding their product and service offer.
+Survey data analytics helps uncover insights about customer behavior, satisfaction, and demographic patterns.
+This report demonstrates a **clean**, **reproducible**, and **well‑structured** Quarto workflow for analyzing survey data.
+
+# Load Packages
+
+```{r}
+#| label: load-packages
+#| include: true
+
+library(tidyverse)
+library(janitor)
+library(DT)
+library(ggplot2)
+```
 
 ## Running Code
 
