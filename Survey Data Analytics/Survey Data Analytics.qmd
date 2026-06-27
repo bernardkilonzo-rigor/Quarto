@@ -8,19 +8,27 @@ editor: visual
 
 ## Overview
 
-Survey data analytics helps uncover insights about customer behavior, satisfaction, and demographic patterns.
-This report demonstrates a **clean**, **reproducible**, and **well‑structured** Quarto workflow for analyzing survey data.
+Survey data analytics helps uncover insights about customer behavior, satisfaction, and demographic patterns. This report demonstrates a **clean**, **reproducible**, and **well‑structured** Quarto workflow for analyzing survey data.
 
 # Load Packages
 
 ```{r}
-#| label: load-packages
+#| label: load-libraries
 #| include: true
+#| message: false
+#| warning: false
 
 library(tidyverse)
 library(janitor)
 library(DT)
-library(ggplot2)
+```
+
+# Load Data
+
+```{r}
+Survey_data <- read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/main/data/Survey%20Data.csv")|>
+  clean_names()
+
 ```
 
 ## Running Code
