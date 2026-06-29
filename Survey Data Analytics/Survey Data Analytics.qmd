@@ -84,6 +84,38 @@ Survey_data%>%
   gt()
 ```
 
+4.  Employment Frequency
+
+```{r}
+Survey_data%>%
+  tabyl(employment_status)%>%
+  arrange(desc(n))%>% #sorting before totals
+  adorn_totals("row")%>% #add total
+  adorn_pct_formatting()%>% #add percentages
+  rename(
+    "Employment Status" = employment_status,
+    Count = n,
+    Percent = percent
+  )%>%
+  gt()
+```
+
+5.  Income Level Frequency
+
+```{r}
+Survey_data%>%
+  tabyl(income_level)%>%
+  arrange(desc(n))%>% #sorting before totals
+  adorn_totals("row")%>% #add total
+  adorn_pct_formatting()%>% #add percentages
+  rename(
+    "Income Level" = income_level,
+    Count = n,
+    Percent = percent
+  )%>%
+  gt()
+```
+
 ## Running Code
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
