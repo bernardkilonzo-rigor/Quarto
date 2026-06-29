@@ -3,6 +3,8 @@ title: "Survey Data Analytics"
 author: "Bernard Kilonzo"
 date: "2026-06-26"
 format: html
+code-fold: true
+code-summary: "Show the code"
 editor: visual
 ---
 
@@ -21,14 +23,33 @@ Survey data analytics helps uncover insights about customer behavior, satisfacti
 library(tidyverse)
 library(janitor)
 library(DT)
+library(gt)
 ```
 
 # Load Data
 
 ```{r}
-Survey_data <- read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/main/data/Survey%20Data.csv")|>
+Survey_data <- read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/main/data/Survey%20Data.csv")%>%
   clean_names()
 
+```
+
+# Descriptive Statistics
+
+1.  Gender Frequency
+
+```{r}
+Survey_data%>%
+  tabyl(gender)%>%
+  arrange(desc(n))%>% #sorting before totals
+  adorn_totals("row")%>% #add total
+  adorn_pct_formatting()%>% #add percentages
+  rename(
+    Gender = gender,
+    Count = n,
+    Percent = percent
+  )%>%
+  gt()
 ```
 
 ## Running Code
