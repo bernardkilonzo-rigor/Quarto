@@ -84,7 +84,7 @@ Survey_data%>%
   gt()
 ```
 
-4.  Employment Frequency
+4.  Employment Status Frequency
 
 ```{r}
 Survey_data%>%
@@ -110,6 +110,22 @@ Survey_data%>%
   adorn_pct_formatting()%>% #add percentages
   rename(
     "Income Level" = income_level,
+    Count = n,
+    Percent = percent
+  )%>%
+  gt()
+```
+
+6.  Country Frequency
+
+```{r}
+Survey_data%>%
+  tabyl(country)%>%
+  arrange(desc(n))%>% #sorting before totals
+  adorn_totals("row")%>% #add total
+  adorn_pct_formatting()%>% #add percentages
+  rename(
+    Country = country,
     Count = n,
     Percent = percent
   )%>%
