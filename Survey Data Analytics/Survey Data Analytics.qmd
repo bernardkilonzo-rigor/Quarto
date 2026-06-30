@@ -37,7 +37,7 @@ Survey_data <- read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/
 # Shaping Data
 
 ```{r}
-survey_data1 <- Survey_data%>%
+Survey_data1 <- Survey_data%>%
   pivot_longer(cols = c(q2a:q5_6), names_to = "Quiz", values_to = "Responses")%>%
   pivot_longer(cols = c(q6a:q6e), names_to = "Q6", values_to = "Values")%>%
   mutate(Quiz_group = 
@@ -150,7 +150,25 @@ Survey_data%>%
 
 # Main Analysis
 
-1.  Customer Acquisition by Channel
+1.  Computing Customer Acquisition by Channel
+
+```{r}
+Survey_data1%>%
+        group_by(q1)%>%
+        summarise(count = n_distinct(respondent_s_id))%>%
+        mutate(pr = count/sum(count))%>%
+        mutate(Percent = scales::percent(pr, accuracy = 0.1))%>%
+        ggplot(aes(y = q1, x = count))+
+        geom_bar(stat = "identity", fill = "#FED789")+
+        geom_text(aes(label = Percent), hjust = 1)+
+        theme(
+          panel.background = element_blank(),
+          axis.title = element_blank(),
+          axis.text = element_text(family = "serif",size = 12, color = "gray30"),
+          axis.text.x = element_blank(),
+          axis.ticks.x = element_blank()
+        )
+```
 
 ## Running Code
 
