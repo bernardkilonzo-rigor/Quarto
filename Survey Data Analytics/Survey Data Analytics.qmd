@@ -195,6 +195,27 @@ Survey_data1%>%
         )
 ```
 
+3.  Computing the Most Helpful Content
+
+```{r}
+Survey_data1%>%
+  filter(Quiz_group == "Q5")%>%
+        filter(!is.na(Responses), trimws(Responses) != "")%>%
+        group_by(Responses)%>%
+        summarise(count = n_distinct(respondent_s_id))%>%
+        mutate(pr = count/sum(count))%>%
+        mutate(Percent = scales::percent(pr, accuracy = 0.1))%>%
+        ggplot(aes(y = Responses, x = count))+
+        geom_bar(stat = "identity", fill = "#FED789")+
+        geom_text(aes(label = Percent), hjust = 1)+
+        theme(
+          panel.background = element_blank(),
+          axis.title = element_blank(),
+          axis.text.x = element_blank(),
+          axis.ticks.x = element_blank()
+        )
+```
+
 ## Running Code
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
