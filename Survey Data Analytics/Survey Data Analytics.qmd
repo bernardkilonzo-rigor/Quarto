@@ -308,19 +308,8 @@ Survey_data1%>%
         )
 ```
 
-## Running Code
+## Conclusion
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+Survey data analytics provides a powerful foundation for understanding perceptions, behaviors, and satisfaction levels across different respondent groups. By applying a structured workflow - data cleaning, descriptive summaries, Likert analysis, cross‑tabulations, and visual exploration - we transform raw survey responses into meaningful insights that support evidence‑based decision‑making.
 
-```{r}
-1 + 1
-```
-
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+The techniques demonstrated in this document highlight how R enables reproducible, transparent, and scalable analysis. Whether the goal is monitoring customer satisfaction, evaluating service quality, or exploring demographic trends, this workflow ensures that insights remain consistent, defensible, and easy to extend. As organizations continue to rely on data‑driven strategies, robust survey analytics becomes essential for identifying priorities, guiding interventions, and measuring impact over time.
