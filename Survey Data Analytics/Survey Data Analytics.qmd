@@ -207,6 +207,8 @@ Survey_data1%>%
         summarise(count = n_distinct(respondent_s_id))%>%
         mutate(pr = count/sum(count))%>%
         mutate(Percent = scales::percent(pr, accuracy = 0.1))%>%
+        arrange(desc(count))%>%
+        mutate(q1 = factor(Responses, levels = Responses))%>%
         ggplot(aes(y = Responses, x = count))+
         geom_bar(stat = "identity", fill = "#FED789")+
         geom_text(aes(label = Percent), hjust = 1)+
