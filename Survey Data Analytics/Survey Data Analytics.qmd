@@ -139,7 +139,7 @@ Survey_data%>%
 ```{r}
 Survey_data%>%
   tabyl(country)%>%
-  arrange(desc(n))%>% #sorting before totals
+  arrange(desc(n))%>% #sort in descending order
   adorn_totals("row")%>% #add total
   adorn_pct_formatting()%>% #add percentages
   rename(
@@ -177,6 +177,8 @@ Survey_data1%>%
 2.  Computing Percentage That Completed the Course.
 
 ```{r}
+#| message: false
+#| warning: false
 Survey_data1%>%
   filter(Quiz_group == "Q2")%>%
         group_by(Quiz, Responses)%>%
@@ -223,6 +225,8 @@ Survey_data1%>%
 4.  Visualizing Level of Satisfaction
 
 ```{r}
+#| message: false
+#| warning: false
 Survey_data1%>%
   filter(Quiz_group == "Q3")%>%
         mutate(
@@ -252,6 +256,8 @@ Survey_data1%>%
 5.  Visualizing Quality of Training Materials
 
 ```{r}
+#| message: false
+#| warning: false
 Survey_data1%>%
   filter(Quiz_group == "Q4")%>%
         mutate(
@@ -281,6 +287,8 @@ Survey_data1%>%
 6.  Visualizing Net Promoters Score (NPS)
 
 ```{r}
+#| message: false
+#| warning: false
 Survey_data1%>%
   mutate(nps_group = 
                  case_when(
