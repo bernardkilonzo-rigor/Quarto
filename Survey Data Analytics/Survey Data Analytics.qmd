@@ -1,5 +1,5 @@
 ---
-title: "Survey Data Analytics"
+title: "Survey Data Analytics & Visualization"
 author: "Bernard Kilonzo"
 date: "2026-07-12"
 format: html
