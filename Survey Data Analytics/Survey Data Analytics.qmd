@@ -138,6 +138,16 @@ Survey_data%>%
 
 ```{r}
 Survey_data%>%
+  group_by(country)%>%
+  summarise(Count = n_distinct(respondent_s_id))%>%
+  arrange(desc(Count))%>%
+  mutate(
+    country = if_else(row_number()<=10, country, "Other Countries")
+  )%>%
+  group_by(country)%>%
+  summarise(Count = sum(Count))
+
+Survey_data%>%
   tabyl(country)%>%
   arrange(desc(n))%>% #sort in descending order
   adorn_totals("row")%>% #add total
