@@ -145,7 +145,18 @@ Survey_data%>%
     country = if_else(row_number()<=10, country, "Other Countries")
   )%>%
   group_by(country)%>%
-  summarise(Count = sum(Count))
+  summarise(Count = sum(Count))%>%
+  arrange(desc(Count))%>%
+  mutate(Percent = Count/sum(Count))%>%
+  bind_rows(
+    summarise(.,
+              country = "Total",
+              Count = sum(Count),
+              Percent = 1
+    )
+  )%>%
+  mutate(Percent = percent(Percent, accuracy =0.1))%>%
+  gt()
 
 Survey_data%>%
   tabyl(country)%>%
