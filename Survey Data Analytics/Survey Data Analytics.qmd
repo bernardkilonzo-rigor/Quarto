@@ -157,18 +157,6 @@ Survey_data%>%
   )%>%
   mutate(Percent = percent(Percent, accuracy =0.1))%>%
   gt()
-
-Survey_data%>%
-  tabyl(country)%>%
-  arrange(desc(n))%>% #sort in descending order
-  adorn_totals("row")%>% #add total
-  adorn_pct_formatting()%>% #add percentages
-  rename(
-    Country = country,
-    Count = n,
-    Percent = percent
-  )%>%
-  gt()
 ```
 
 # Main Analysis
