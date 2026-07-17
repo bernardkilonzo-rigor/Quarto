@@ -159,6 +159,36 @@ Survey_data%>%
   gt()
 ```
 
+```{r}
+Survey_data %>%
+  # Count distinct respondents per country
+  count(country, respondent_s_id) %>%
+  group_by(country) %>%
+  summarise(Count = n_distinct(respondent_s_id)) %>%
+  arrange(desc(Count)) %>%
+  
+  # Collapse into top 10 + Others
+  mutate(country = if_else(row_number() <= 10, country, "Other Countries")) %>%
+  group_by(country) %>%
+  summarise(Count = sum(Count)) %>%
+  arrange(desc(Count)) %>%
+  
+  # Add percentages using janitor
+  adorn_totals("row") %>% 
+  mutate(
+    Percent = Count / sum(Count),
+    Percent = percent(Percent, accuracy = 0.1)
+  ) %>%
+  
+  # Rename for presentation
+  rename(
+    Country = country
+  ) %>%
+  
+  # Convert to gt table
+  gt()
+```
+
 # Main Analysis
 
 1.  Computing Customer Acquisition by Channel
