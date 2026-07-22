@@ -17,11 +17,10 @@ library(sf)
 library(paletteer)
 ```
 
-You can add options to executable code like this
+# Loading Data
 
 ```{r}
-#| echo: false
-2 * 2
+setwd("C:\\Users\\berna\\OneDrive\\Desktop\\Production\\dataviz\\code\\Map\\haiti_adm2_boundaries")
+survey_sample<-read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/refs/heads/main/data/Survey%20Sample.csv")
+adm2_shapefiles<-st_read("hti_boundaries_communes_adm2_cnigs_polygon.shp")
 ```
-
-The `echo: false` option disables the printing of code (only output is displayed).
