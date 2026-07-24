@@ -7,11 +7,7 @@ code-summary: "show the code"
 editor: visual
 ---
 
-## Introduction
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Loading libraries
+## Sample Size by Commune (Haiti)
 
 ```{r}
 #| label: load-libraries
