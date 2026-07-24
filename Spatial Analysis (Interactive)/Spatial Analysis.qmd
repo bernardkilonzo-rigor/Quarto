@@ -12,29 +12,21 @@ Quarto enables you to weave together content and executable code into a finished
 ## Loading libraries
 
 ```{r}
+#loading libraries
 library(tidyverse)
 library(sf)
 library(paletteer)
-```
 
-# Loading Data
-
-```{r}
+#loading data
 setwd("C:\\Users\\berna\\OneDrive\\Desktop\\Production\\dataviz\\code\\Map\\haiti_adm2_boundaries")
 survey_sample<-read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/refs/heads/main/data/Survey%20Sample.csv")
 adm2_shapefiles<-st_read("hti_boundaries_communes_adm2_cnigs_polygon.shp")
-```
 
-# Joining Data Sets
-
-```{r}
+#joining data sets
 merged_data<-adm2_shapefiles%>%left_join(
   survey_sample, by =c("commune"="Commune"))
-```
 
-# Creating a Map
-
-```{r}
+#creating a map
 merged_data%>%ggplot(aes(geometry=geometry, label = commune,
                          fill = Sample.Size))+
   geom_sf(color ="white", linewidth = 0.1)+
@@ -50,4 +42,5 @@ merged_data%>%ggplot(aes(geometry=geometry, label = commune,
         plot.caption = element_text(family = "serif",  size = 8),
         legend.title = element_text(family = "serif", size = 8),
         legend.text = element_text(family = "serif", size = 8))
+
 ```
