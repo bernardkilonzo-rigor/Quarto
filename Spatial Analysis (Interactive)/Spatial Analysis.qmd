@@ -51,5 +51,47 @@ merged_data%>%ggplot(aes(geometry=geometry, label = commune,
 ## Sample Size by Commune Haiti (Interactive)
 
 ```{r}
+#| label: load-libraries
+#| include: true
+#| message: false
+#| warning: false
+
+#loading libraries
+library(tidyverse)
+library(sf)
+library(paletteer)
+library(plotly)
+library(ggiraph)
+
+#loading data
+setwd("C:\\Users\\berna\\OneDrive\\Desktop\\Production\\dataviz\\code\\Map\\haiti_adm2_boundaries")
+survey_sample<-read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/refs/heads/main/data/Survey%20Sample.csv")
+adm2_shapefiles<-st_read("hti_boundaries_communes_adm2_cnigs_polygon.shp", quiet = TRUE)
+
+#joining data sets
+merged_data<-adm2_shapefiles%>%left_join(
+  survey_sample, by =c("commune"="Commune"))
+
+#creating a map
+mp<-merged_data%>%ggplot(aes(geometry=geometry, label = commune,
+                         fill = Sample.Size))+
+  geom_sf(color ="white", linewidth = 0.1)+
+  geom_sf_interactive(aes(tooltip = paste0("<b>", commune, "</b><br>",
+                                           "Sample Size: ", Sample.Size)))+
+  scale_fill_gradient(low = "#fe9f6d", high = "#3b0f70")+
+  labs(title = "Survey Sample Size by Commune in Haiti",
+       caption = "Viz By: Bernard Kilonzo",
+       fill = "Sample Size")+
+  theme(panel.background = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        plot.title = element_text(family = "serif", face = "bold",size = 12),
+        plot.subtitle = element_text(family = "serif", size = 10,face = "italic" ,color = "gray22"),
+        plot.caption = element_text(family = "serif",  size = 8),
+        legend.title = element_text(family = "serif", size = 8),
+        legend.text = element_text(family = "serif", size = 8))
+
+#creating interactive map
+girafe(mp)
 
 ```
