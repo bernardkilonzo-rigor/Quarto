@@ -47,3 +47,9 @@ merged_data%>%ggplot(aes(geometry=geometry, label = commune,
         legend.text = element_text(family = "serif", size = 8))
 
 ```
+
+## Sample Size by Commune Haiti (Interactive)
+
+```{r}
+
+```
