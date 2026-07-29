@@ -77,4 +77,13 @@ Pal <- colorNumeric(
   domain = merged_data$Sample.Size
 )
 
+#creating an interactive map
+leaflet(merged_data)%>%
+  addTiles()%>%
+  addPolygons(
+    fillColor = ~Pal(Sample.Size),
+    fillOpacity = 0.8,
+    color = "white",
+    weight = 1
+  )
 ```
