@@ -70,7 +70,7 @@ adm2_shapefiles<-st_read("hti_boundaries_communes_adm2_cnigs_polygon.shp", quiet
 #joining data sets
 merged_data<-adm2_shapefiles%>%left_join(
   survey_sample, by =c("commune"="Commune"))
-
+View(merged_data)
 #creating color palette
 Pal <- colorNumeric(
   palette = as.character(paletteer::paletteer_d("MoMAColors::Alkalay2")),
@@ -84,6 +84,16 @@ leaflet(merged_data)%>%
     fillColor = ~Pal(Sample.Size),
     fillOpacity = 0.8,
     color = "white",
-    weight = 1
+    weight = 1,
+    popup = ~paste0(
+      "<strong>Commune: </strong>", commune, "<br>",
+      "<strong>Sample Size: </strong>", Sample.Size
+    )
+  )%>%
+  addLegend(
+    pal = Pal,
+    values = ~Sample.Size,
+    title = " Legend",
+    position = "bottomright"
   )
 ```
