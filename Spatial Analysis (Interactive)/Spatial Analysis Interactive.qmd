@@ -1,0 +1,58 @@
+---
+title: "Spatial Analysis (Interactive)"
+author: "Bernard Kilonzo"
+format: html
+code-fold: true
+code-summary: "Show the code"
+editor: visual
+---
+
+## Sample Size by Commune (Haiti)
+
+```{r}
+#| label: load-libraries
+#| include: true
+#| message: false
+#| warning: false
+
+#loading libraries
+library(tidyverse)
+library(sf)
+library(paletteer)
+library(leaflet)
+
+#loading data
+setwd("C:\\Users\\berna\\OneDrive\\Desktop\\Production\\dataviz\\code\\Map\\haiti_adm2_boundaries")
+survey_sample<-read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/refs/heads/main/data/Survey%20Sample.csv")
+adm2_shapefiles<-st_read("hti_boundaries_communes_adm2_cnigs_polygon.shp", quiet = TRUE)
+
+#joining data sets
+merged_data<-adm2_shapefiles%>%left_join(
+  survey_sample, by =c("commune"="Commune"))
+
+#creating color palette
+Pal <- colorNumeric(
+  palette = as.character(paletteer::paletteer_d("MoMAColors::Alkalay2")),
+  domain = merged_data$Sample.Size
+)
+
+#creating an interactive map
+leaflet(merged_data)%>%
+  addTiles()%>%
+  addPolygons(
+    fillColor = ~Pal(Sample.Size),
+    fillOpacity = 0.8,
+    color = "white",
+    weight = 1,
+    popup = ~paste0(
+      "<strong>Commune: </strong>", commune, "<br>",
+      "<strong>Sample Size: </strong>", Sample.Size
+    )
+  )%>%
+  addLegend(
+    pal = Pal,
+    values = ~Sample.Size,
+    title = " Legend",
+    position = "bottomright"
+  )
+```
