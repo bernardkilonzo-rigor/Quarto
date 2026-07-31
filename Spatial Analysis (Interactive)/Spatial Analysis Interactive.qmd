@@ -38,7 +38,7 @@ Pal <- colorNumeric(
 
 #creating an interactive map
 leaflet(merged_data)%>%
-  addTiles()%>%
+  addTiles(options = tileOptions(opacity = 0))%>% #hiding base tiles
   addPolygons(
     fillColor = ~Pal(Sample.Size),
     fillOpacity = 0.8,
