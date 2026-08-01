@@ -1,5 +1,5 @@
 ---
-title: "Spatial Analysis (Interactive)"
+title: "Spatial Analysis"
 author: "Bernard Kilonzo"
 format: html
 code-fold: true
