@@ -32,7 +32,7 @@ merged_data<-adm2_shapefiles%>%left_join(
 
 #creating color palette
 Pal <- colorNumeric(
-  palette = as.character(paletteer::paletteer_d("MoMAColors::Alkalay2")),
+  palette = as.character(paletteer::paletteer_d("rcartocolor::BrwnYl")),
   domain = merged_data$Sample.Size
 )
 
