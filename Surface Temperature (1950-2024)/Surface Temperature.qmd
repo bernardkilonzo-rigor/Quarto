@@ -20,4 +20,15 @@ library(tidyverse)
 
 #loading data
 surface_temperature<-read_csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/main/data/global%20surface%20temperature.csv")
+
+#pivoting dataset
+surface_temperature<-surface_temperature%>%
+  pivot_longer(cols = -c(Entity,Code, Month),
+               names_to = "Year",
+               values_to = "Temp")
+
+#rounding-off values & computing month names
+surface_temperature<-surface_temperature%>%
+  mutate(tempr = round(Temp,3))%>%
+  mutate(mon = month.name[Month])
 ```
