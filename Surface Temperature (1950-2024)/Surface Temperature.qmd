@@ -31,4 +31,9 @@ surface_temperature<-surface_temperature%>%
 surface_temperature<-surface_temperature%>%
   mutate(tempr = round(Temp,3))%>%
   mutate(mon = month.name[Month])
+
+#ordering months
+surface_temperature$mon<-factor(surface_temperature$mon, levels = month.name)
+
+
 ```
