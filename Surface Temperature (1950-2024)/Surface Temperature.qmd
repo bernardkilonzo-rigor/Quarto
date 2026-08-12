@@ -336,7 +336,7 @@ surface_temperature%>%filter(Entity=="Peru")%>%
   )
 ```
 
-ttt
+## Surface Temperature in Cuba
 
 ```{r}
 #| include: true
@@ -383,7 +383,7 @@ surface_temperature%>%filter(Entity=="Cuba")%>%
   )
 ```
 
-rrrrrr
+## Surface Temperature in Australia
 
 ```{r}
 #| include: true
