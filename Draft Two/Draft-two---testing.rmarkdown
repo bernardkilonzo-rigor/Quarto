@@ -1,5 +1,5 @@
 ---
-title: "Draft Two Testing"
+title: "Draft Two - Testing"
 author: "Bernard Kilonzo"
 format: html
 code-fold: true
@@ -85,7 +85,7 @@ Ke_pop_v1%>%filter(Year>2008)%>%
         plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray40"))
 ```
 
-## Population Pyramid - 1999, 2009, & 2019
+## Population Pyramid - (1999, 2009, & 2019) 
 
 ```{r}
 #overlaying three periods (1999, 2009 & 2019)
@@ -109,3 +109,4 @@ Ke_pop_v1%>%ggplot(aes(x = `Age Group`, y =Pop/1e6, fill =Year))+
         plot.title = element_text(family = "serif", face = "bold", size = 12, color = "gray25"),
         plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray40"))
 ```
+
