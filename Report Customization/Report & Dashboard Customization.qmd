@@ -2,6 +2,8 @@
 title: "Report & Dashboard Customization"
 author: "Bernard Kilonzo"
 format: html
+title-block-style: manuscript
+title-block-banner: "#d63400"
 code-fold: true
 code-summary: "Show the code"
 editor: visual
