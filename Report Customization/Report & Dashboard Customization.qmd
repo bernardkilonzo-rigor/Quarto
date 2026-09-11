@@ -2,17 +2,21 @@
 title: "Report & Dashboard Customization"
 author: "Bernard Kilonzo"
 date: today
-format: html
-theme: darkly
-toc: true
-toc-depth: 3
-number-sections: true
-smooth-scroll: true
-code-fold: true
-code-summary: "Show the code"
-title-block-style: manuscript
-title-block-banner: "#d63400"
-page-layout: full
+format:
+ html:
+  theme:
+   light: cosmo
+   dark: darkly
+  theme-toggle: true
+  toc: true
+  toc-depth: 3
+  number-sections: true
+  smooth-scroll: true
+  code-fold: true
+  code-summary: "Show the code"
+  title-block-style: manuscript
+  title-block-banner: "#d63400"
+  page-layout: full
 editor: visual
 ---
 
