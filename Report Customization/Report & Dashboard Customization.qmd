@@ -15,7 +15,8 @@ format:
   code-fold: true
   code-summary: "Show the code"
   title-block-style: manuscript
-  title-block-banner: "#d63400"
+  title-block-banner: "#023743" #background color
+  title-block-banner-color: "#FFFFFF" #text color
   page-layout: full
 editor: visual
 ---
