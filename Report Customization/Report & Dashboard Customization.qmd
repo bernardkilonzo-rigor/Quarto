@@ -30,10 +30,20 @@ This document demonstrates how you can format your Quarto documents/presentation
 This section loads all the required libraries for this analysis.
 
 ```{r}
-#| include: true
 #| message: false
 #| warning: false
 library(tidyverse)
 library(paletteer)
+```
+
+## The Data
+
+This section loads Sample - Superstore data set used in this document.
+
+```{r}
+#| message: false
+#| warning: false
+
+superstore<-read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/main/data/Sample%20-%20Superstore.csv")
 
 ```
