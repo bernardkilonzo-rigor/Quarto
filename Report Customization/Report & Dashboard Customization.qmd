@@ -21,23 +21,16 @@ format:
 editor: visual
 ---
 
-## Quarto
+## Introduction
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+This document demonstrates how you can format your Quarto documents/presentation to make them presentable to your users. Information shared in this document is purely for demonstration purpose and therefore doesn't authoritatively suggest anything about the subject.
 
-## Running Code
+## Libraries
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
-```
-
-You can add options to executable code like this
+This section loads all the required libraries for this analysis.
 
 ```{r}
-#| echo: false
-2 * 2
-```
+library(tidyverse)
+library(paletteer)
 
-The `echo: false` option disables the printing of code (only output is displayed).
+```
