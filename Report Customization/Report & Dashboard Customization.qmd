@@ -30,6 +30,9 @@ This document demonstrates how you can format your Quarto documents/presentation
 This section loads all the required libraries for this analysis.
 
 ```{r}
+#| include: true
+#| message: false
+#| warning: false
 library(tidyverse)
 library(paletteer)
 
