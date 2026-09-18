@@ -364,7 +364,7 @@ background: #023743;
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>Prtions<span class="ot">&lt;-</span>superstore<span class="sc">%&gt;%</span><span class="fu">group_by</span>(month, Region)<span class="sc">%&gt;%</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sales =</span> <span class="fu">sum</span>(Sales))<span class="sc">%&gt;%</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pr=</span>sales<span class="sc">/</span><span class="fu">sum</span>(sales))<span class="sc">%&gt;%</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent=</span>formattable<span class="sc">::</span><span class="fu">percent</span>(pr))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent=</span>formattable<span class="sc">::</span><span class="fu">percent</span>(pr, <span class="at">digits=</span><span class="dv">1</span>))</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#create 100% stacked bar chart</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>Prtions<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span>month, <span class="at">y =</span> percent, <span class="at">fill =</span>Region))<span class="sc">+</span></span>

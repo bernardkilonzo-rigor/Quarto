@@ -67,7 +67,7 @@ superstore<-superstore%>%mutate(month=month(Order.Date, label =TRUE))
 Prtions<-superstore%>%group_by(month, Region)%>%
   summarise(sales = sum(Sales))%>%
   mutate(pr=sales/sum(sales))%>%
-  mutate(percent=formattable::percent(pr))
+  mutate(percent=formattable::percent(pr, digits=1))
 
 #create 100% stacked bar chart
 Prtions%>%ggplot(aes(x =month, y = percent, fill =Region))+
