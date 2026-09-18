@@ -76,6 +76,10 @@ Prtions%>%ggplot(aes(x =month, y = percent, fill =Region))+
     scale_fill_paletteer_d("nationalparkcolors::Acadia")+
   labs(title = "Sales Breakdown by Region",
        caption = "Visualization by: Bernard Kilonzo")+
+  geom_text(aes(label = percent),
+            position = position_stack(vjust = 0.5),
+            color = "white",
+            size = 3)+
     theme(panel.background = element_blank(),
         axis.line = element_line(color = "gray50"),
         axis.ticks = element_line(color = "gray50"),
