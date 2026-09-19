@@ -93,3 +93,16 @@ Prtions%>%ggplot(aes(x =month, y = percent, fill =Region))+
   )
 
 ```
+
+### A Balloon Plot on Revenue by Region & Sub-Category
+
+```{r}
+#| message: false
+#| warning: false
+
+#preparing data set
+computed_dat<-superstore%>%
+  group_by(Region, Sub.Category)%>%
+  summarise(sales = sum(Sales))
+
+```

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-09-18">
+<meta name="dcterms.date" content="2026-09-19">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">September 18, 2026</p>
+              <p class="date">September 19, 2026</p>
             </div>
           </div>
           
@@ -310,6 +310,7 @@ background: #023743;
   <li><a href="#the-analysis" id="toc-the-analysis" class="nav-link" data-scroll-target="#the-analysis"><span class="header-section-number">4</span> The Analysis</a>
   <ul class="collapse">
   <li><a href="#a-stacked-bar-chart-on-revenue-by-region" id="toc-a-stacked-bar-chart-on-revenue-by-region" class="nav-link" data-scroll-target="#a-stacked-bar-chart-on-revenue-by-region"><span class="header-section-number">4.1</span> A stacked bar chart on Revenue by Region</a></li>
+  <li><a href="#a-balloon-plot-on-revenue-by-region-sub-category" id="toc-a-balloon-plot-on-revenue-by-region-sub-category" class="nav-link" data-scroll-target="#a-balloon-plot-on-revenue-by-region-sub-category"><span class="header-section-number">4.2</span> A Balloon Plot on Revenue by Region &amp; Sub-Category</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -396,6 +397,18 @@ background: #023743;
 </figure>
 </div>
 </div>
+</div>
+</section>
+<section id="a-balloon-plot-on-revenue-by-region-sub-category" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="a-balloon-plot-on-revenue-by-region-sub-category"><span class="header-section-number">4.2</span> A Balloon Plot on Revenue by Region &amp; Sub-Category</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#preparing data set</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>computed_dat<span class="ot">&lt;-</span>superstore<span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Region, Sub.Category)<span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sales =</span> <span class="fu">sum</span>(Sales))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 </section>
