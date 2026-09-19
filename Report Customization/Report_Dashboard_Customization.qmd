@@ -112,7 +112,7 @@ computed_dat%>%ggplot(aes(x = Region, y = Sub.Category))+
   scale_fill_viridis_c() +
   labs(title = "Balloon Plot", caption = "Viz By: Bernard Kilonzo",
        x = "Region",
-       y = "Sub-Category", size = "Sales", fill = "Sales")+
+       y = "Sub-Category", size = "Revenue", fill = "Revenue")+
   theme_minimal()+
   theme(
     panel.grid = element_line(color = "gray95", linewidth = 0.1),
