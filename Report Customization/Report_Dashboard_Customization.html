@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-09-22">
+<meta name="dcterms.date" content="2026-09-23">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">September 22, 2026</p>
+              <p class="date">September 23, 2026</p>
             </div>
           </div>
           
@@ -312,6 +312,7 @@ background: #023743;
   <li><a href="#a-stacked-bar-chart-on-revenue-by-region" id="toc-a-stacked-bar-chart-on-revenue-by-region" class="nav-link" data-scroll-target="#a-stacked-bar-chart-on-revenue-by-region"><span class="header-section-number">4.1</span> A stacked bar chart on Revenue by Region</a></li>
   <li><a href="#a-balloon-plot-on-revenue-by-region-sub-category" id="toc-a-balloon-plot-on-revenue-by-region-sub-category" class="nav-link" data-scroll-target="#a-balloon-plot-on-revenue-by-region-sub-category"><span class="header-section-number">4.2</span> A Balloon Plot on Revenue by Region &amp; Sub-Category</a></li>
   <li><a href="#a-bar-in-bar-chart-comparing-revenue-vs.-profit" id="toc-a-bar-in-bar-chart-comparing-revenue-vs.-profit" class="nav-link" data-scroll-target="#a-bar-in-bar-chart-comparing-revenue-vs.-profit"><span class="header-section-number">4.3</span> A Bar-in-bar chart comparing Revenue vs.&nbsp;Profit</a></li>
+  <li><a href="#a-bump-chart-ranking-revenue-by-region-and-month" id="toc-a-bump-chart-ranking-revenue-by-region-and-month" class="nav-link" data-scroll-target="#a-bump-chart-ranking-revenue-by-region-and-month"><span class="header-section-number">4.4</span> A Bump chart ranking Revenue by Region and Month</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -331,6 +332,10 @@ background: #023743;
 <section id="libraries" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="libraries"><span class="header-section-number">2</span> Libraries</h2>
 <p>This section loads all the required libraries for this analysis.</p>
+<p>library(tidyverse)</p>
+<p>library(paletteer)</p>
+<p>library(scales)</p>
+<p>library(zoo)</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -464,6 +469,36 @@ background: #023743;
 <div>
 <figure class="figure">
 <p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="a-bump-chart-ranking-revenue-by-region-and-month" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="a-bump-chart-ranking-revenue-by-region-and-month"><span class="header-section-number">4.4</span> A Bump chart ranking Revenue by Region and Month</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a basic box plot</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>superstore<span class="sc">%&gt;%</span><span class="fu">filter</span>(Region<span class="sc">==</span><span class="st">"East"</span>)<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> State, <span class="at">x =</span> Quantity, <span class="at">fill =</span>State))<span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_boxplot</span>(<span class="at">geom =</span> <span class="st">"errorbar"</span>,<span class="at">width =</span><span class="fl">0.4</span>)<span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_paletteer_d</span>(<span class="st">"palettetown::solrock"</span>)<span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Order Distribution by Quantity by State"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>)<span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray30"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>),</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray30"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">size =</span> <span class="dv">10</span>,<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"gray30"</span>),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray30"</span>),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">13</span>, <span class="at">color =</span> <span class="st">"gray25"</span>),</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"italic"</span>, <span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray35"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
