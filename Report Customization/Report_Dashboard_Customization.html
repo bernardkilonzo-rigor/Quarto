@@ -312,7 +312,7 @@ background: #023743;
   <li><a href="#a-stacked-bar-chart-on-revenue-by-region" id="toc-a-stacked-bar-chart-on-revenue-by-region" class="nav-link" data-scroll-target="#a-stacked-bar-chart-on-revenue-by-region"><span class="header-section-number">4.1</span> A stacked bar chart on Revenue by Region</a></li>
   <li><a href="#a-balloon-plot-on-revenue-by-region-sub-category" id="toc-a-balloon-plot-on-revenue-by-region-sub-category" class="nav-link" data-scroll-target="#a-balloon-plot-on-revenue-by-region-sub-category"><span class="header-section-number">4.2</span> A Balloon Plot on Revenue by Region &amp; Sub-Category</a></li>
   <li><a href="#a-bar-in-bar-chart-comparing-revenue-vs.-profit" id="toc-a-bar-in-bar-chart-comparing-revenue-vs.-profit" class="nav-link" data-scroll-target="#a-bar-in-bar-chart-comparing-revenue-vs.-profit"><span class="header-section-number">4.3</span> A Bar-in-bar chart comparing Revenue vs.&nbsp;Profit</a></li>
-  <li><a href="#a-box-plot-showcasing-distribution-of-revenue-by-states-in-east-region" id="toc-a-box-plot-showcasing-distribution-of-revenue-by-states-in-east-region" class="nav-link" data-scroll-target="#a-box-plot-showcasing-distribution-of-revenue-by-states-in-east-region"><span class="header-section-number">4.4</span> A Box-plot showcasing distribution of Revenue by States in East Region</a></li>
+  <li><a href="#a-box-plot-showcasing-revenue-distribution-by-states-in-east-region" id="toc-a-box-plot-showcasing-revenue-distribution-by-states-in-east-region" class="nav-link" data-scroll-target="#a-box-plot-showcasing-revenue-distribution-by-states-in-east-region"><span class="header-section-number">4.4</span> A Box-plot showcasing Revenue distribution by States in East Region</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -474,8 +474,8 @@ background: #023743;
 </div>
 </div>
 </section>
-<section id="a-box-plot-showcasing-distribution-of-revenue-by-states-in-east-region" class="level3" data-number="4.4">
-<h3 data-number="4.4" class="anchored" data-anchor-id="a-box-plot-showcasing-distribution-of-revenue-by-states-in-east-region"><span class="header-section-number">4.4</span> A Box-plot showcasing distribution of Revenue by States in East Region</h3>
+<section id="a-box-plot-showcasing-revenue-distribution-by-states-in-east-region" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="a-box-plot-showcasing-revenue-distribution-by-states-in-east-region"><span class="header-section-number">4.4</span> A Box-plot showcasing Revenue distribution by States in East Region</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -484,8 +484,8 @@ background: #023743;
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_boxplot</span>(<span class="at">geom =</span> <span class="st">"errorbar"</span>,<span class="at">width =</span><span class="fl">0.4</span>)<span class="sc">+</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_paletteer_d</span>(<span class="st">"palettetown::solrock"</span>)<span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Order Distribution by Quantity by State"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>)<span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Revenue Distribution by States in East Region"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>, <span class="at">x =</span> <span class="st">"Revenue"</span>, <span class="at">y =</span><span class="st">"States"</span>)<span class="sc">+</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray30"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>),</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray30"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>),</span>

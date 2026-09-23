@@ -159,7 +159,7 @@ superstore%>%ggplot(aes(x = mon))+
 
 ```
 
-### A Box-plot showcasing distribution of Revenue by States in East Region
+### A Box-plot showcasing Revenue distribution by States in East Region
 
 ```{r}
 #| message: false
@@ -170,8 +170,8 @@ superstore%>%filter(Region=="East")%>%ggplot(aes(y = State, x = Sales, fill =Sta
   stat_boxplot(geom = "errorbar",width =0.4)+
   geom_boxplot()+
   scale_fill_paletteer_d("palettetown::solrock")+
-  labs(title = "Order Distribution by Quantity by State",
-       caption = "Viz by: Bernard Kilonzo")+
+  labs(title = "Revenue Distribution by States in East Region",
+       caption = "Viz by: Bernard Kilonzo", x = "Revenue", y ="States")+
   theme(panel.background = element_blank(),
         axis.line = element_line(color = "gray30", linewidth = 0.2),
         axis.ticks = element_line(color = "gray30", linewidth = 0.2),
