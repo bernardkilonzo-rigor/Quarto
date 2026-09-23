@@ -159,14 +159,14 @@ superstore%>%ggplot(aes(x = mon))+
 
 ```
 
-### A Bump chart ranking Revenue by Region and Month
+### A Box-plot showcasing distribution of Revenue by States in East Region
 
 ```{r}
 #| message: false
 #| warning: false
 
 #create a basic box plot
-superstore%>%filter(Region=="East")%>%ggplot(aes(y = State, x = Quantity, fill =State))+
+superstore%>%filter(Region=="East")%>%ggplot(aes(y = State, x = Sales, fill =State))+
   stat_boxplot(geom = "errorbar",width =0.4)+
   geom_boxplot()+
   scale_fill_paletteer_d("palettetown::solrock")+
