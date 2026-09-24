@@ -29,14 +29,6 @@ This document demonstrates how you can format your Quarto documents/presentation
 
 This section loads all the required libraries for this analysis.
 
-library(tidyverse)
-
-library(paletteer)
-
-library(scales)
-
-library(zoo)
-
 ```{r}
 #| message: false
 #| warning: false
