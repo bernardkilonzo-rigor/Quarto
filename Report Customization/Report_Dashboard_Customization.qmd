@@ -191,7 +191,7 @@ super_computed%>%ggplot(aes(x ="", y = revenue, fill = Region))+
   geom_text(aes(label = revenue),family ="serif",size =3.3,color = "gray15",position = position_stack(vjust = 0.5))+
   coord_polar(theta = "y")+
   scale_fill_paletteer_d("wesanderson::Chevalier1")+
-  labs(title = "Average Order's Discount by Region",
+  labs(title = "Total Revenue by Region",
        caption = "Viz by: Bernard Kilonzo")+
   theme(panel.background = element_blank(),
         axis.title = element_blank(),
