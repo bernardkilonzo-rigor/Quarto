@@ -183,12 +183,12 @@ superstore%>%filter(Region=="East")%>%ggplot(aes(y = State, x = Sales, fill =Sta
 
 #summarizing data
 super_computed<-superstore%>%group_by(Region)%>%
-  summarise(discount =round(mean(Discount),2))
+  summarise(revenue =round(sum(Sales)))
 
 #create pie chart
-super_computed%>%ggplot(aes(x ="", y = discount, fill = Region))+
+super_computed%>%ggplot(aes(x ="", y = revenue, fill = Region))+
   geom_col(color ="white")+
-  geom_text(aes(label = discount),family ="serif",size =3.3,color = "gray15",position = position_stack(vjust = 0.5))+
+  geom_text(aes(label = revenue),family ="serif",size =3.3,color = "gray15",position = position_stack(vjust = 0.5))+
   coord_polar(theta = "y")+
   scale_fill_paletteer_d("wesanderson::Chevalier1")+
   labs(title = "Average Order's Discount by Region",
