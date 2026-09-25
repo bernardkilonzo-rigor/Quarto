@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-09-24">
+<meta name="dcterms.date" content="2026-09-25">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">September 24, 2026</p>
+              <p class="date">September 25, 2026</p>
             </div>
           </div>
           
@@ -313,6 +313,7 @@ background: #023743;
   <li><a href="#a-balloon-plot-on-revenue-by-region-sub-category" id="toc-a-balloon-plot-on-revenue-by-region-sub-category" class="nav-link" data-scroll-target="#a-balloon-plot-on-revenue-by-region-sub-category"><span class="header-section-number">4.2</span> A Balloon Plot on Revenue by Region &amp; Sub-Category</a></li>
   <li><a href="#a-bar-in-bar-chart-comparing-revenue-vs.-profit" id="toc-a-bar-in-bar-chart-comparing-revenue-vs.-profit" class="nav-link" data-scroll-target="#a-bar-in-bar-chart-comparing-revenue-vs.-profit"><span class="header-section-number">4.3</span> A Bar-in-bar chart comparing Revenue vs.&nbsp;Profit</a></li>
   <li><a href="#a-box-plot-showcasing-revenue-distribution-by-states-in-east-region" id="toc-a-box-plot-showcasing-revenue-distribution-by-states-in-east-region" class="nav-link" data-scroll-target="#a-box-plot-showcasing-revenue-distribution-by-states-in-east-region"><span class="header-section-number">4.4</span> A Box-plot showcasing Revenue distribution by States in East Region</a></li>
+  <li><a href="#a-pie-chart-showcasing-revenue-by-region" id="toc-a-pie-chart-showcasing-revenue-by-region" class="nav-link" data-scroll-target="#a-pie-chart-showcasing-revenue-by-region"><span class="header-section-number">4.5</span> A Pie chart showcasing Revenue by Region</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -332,10 +333,6 @@ background: #023743;
 <section id="libraries" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="libraries"><span class="header-section-number">2</span> Libraries</h2>
 <p>This section loads all the required libraries for this analysis.</p>
-<p>library(tidyverse)</p>
-<p>library(paletteer)</p>
-<p>library(scales)</p>
-<p>library(zoo)</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -499,6 +496,41 @@ background: #023743;
 <div>
 <figure class="figure">
 <p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="a-pie-chart-showcasing-revenue-by-region" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="a-pie-chart-showcasing-revenue-by-region"><span class="header-section-number">4.5</span> A Pie chart showcasing Revenue by Region</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#summarizing data</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>super_computed<span class="ot">&lt;-</span>superstore<span class="sc">%&gt;%</span><span class="fu">group_by</span>(Region)<span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">discount =</span><span class="fu">round</span>(<span class="fu">mean</span>(Discount),<span class="dv">2</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#create pie chart</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>super_computed<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">""</span>, <span class="at">y =</span> discount, <span class="at">fill =</span> Region))<span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span><span class="st">"white"</span>)<span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> discount),<span class="at">family =</span><span class="st">"serif"</span>,<span class="at">size =</span><span class="fl">3.3</span>,<span class="at">color =</span> <span class="st">"gray15"</span>,<span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>)<span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_paletteer_d</span>(<span class="st">"wesanderson::Chevalier1"</span>)<span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Order's Discount by Region"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>)<span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks=</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>,<span class="at">face =</span> <span class="st">"bold"</span>,<span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray35"</span>),</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray30"</span>),</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"gray25"</span>, <span class="at">size =</span><span class="dv">13</span>),</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"italic"</span>, <span class="at">color =</span> <span class="st">"gray40"</span>, <span class="at">size =</span> <span class="dv">9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
