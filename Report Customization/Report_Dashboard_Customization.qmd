@@ -35,6 +35,7 @@ This section loads all the required libraries for this analysis.
 library(tidyverse)
 library(paletteer)
 library(scales)
+library(treemapify)
 ```
 
 ## The Data
@@ -201,4 +202,25 @@ super_computed%>%ggplot(aes(x ="", y = revenue, fill = Region))+
         legend.text = element_text(family = "serif", size = 9, color = "gray30"),
         plot.title = element_text(family = "serif", face = "bold", color = "gray25", size =13),
         plot.caption = element_text(family = "serif", face = "italic", color = "gray40", size = 9))
+```
+
+### A Treemap Showcasing Revenue by State
+
+```{r}
+#| warning: false
+#| message: false
+
+#grouping sales by state
+state_sales<-superstore%>%group_by(State)%>%
+  summarise(sales = sum(Sales))
+
+#creating a tree map
+state_sales%>%ggplot(aes(area = sales, fill = sales,label = State))+
+  geom_treemap(color = "gray85", size =1)+
+  scale_fill_paletteer_c("ggthemes::Red-Green-Gold Diverging")+
+  labs(title = "Revenue by State",
+       caption = "Viz by: Bernard Kilonzo", fill = "Sales")+
+  theme(plot.title = element_text(family = "serif", face = "bold", size = 13, color = "gray20"),
+        plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray40"))
+
 ```

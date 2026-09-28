@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-09-25">
+<meta name="dcterms.date" content="2026-09-28">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">September 25, 2026</p>
+              <p class="date">September 28, 2026</p>
             </div>
           </div>
           
@@ -314,6 +314,7 @@ background: #023743;
   <li><a href="#a-bar-in-bar-chart-comparing-revenue-vs.-profit" id="toc-a-bar-in-bar-chart-comparing-revenue-vs.-profit" class="nav-link" data-scroll-target="#a-bar-in-bar-chart-comparing-revenue-vs.-profit"><span class="header-section-number">4.3</span> A Bar-in-bar chart comparing Revenue vs.&nbsp;Profit</a></li>
   <li><a href="#a-box-plot-showcasing-revenue-distribution-by-states-in-east-region" id="toc-a-box-plot-showcasing-revenue-distribution-by-states-in-east-region" class="nav-link" data-scroll-target="#a-box-plot-showcasing-revenue-distribution-by-states-in-east-region"><span class="header-section-number">4.4</span> A Box-plot showcasing Revenue distribution by States in East Region</a></li>
   <li><a href="#a-pie-chart-showcasing-revenue-by-region" id="toc-a-pie-chart-showcasing-revenue-by-region" class="nav-link" data-scroll-target="#a-pie-chart-showcasing-revenue-by-region"><span class="header-section-number">4.5</span> A Pie chart showcasing Revenue by Region</a></li>
+  <li><a href="#a-treemap-showcasing-revenue-by-state" id="toc-a-treemap-showcasing-revenue-by-state" class="nav-link" data-scroll-target="#a-treemap-showcasing-revenue-by-state"><span class="header-section-number">4.6</span> A Treemap Showcasing Revenue by State</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -338,7 +339,8 @@ background: #023743;
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(paletteer)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -531,6 +533,33 @@ background: #023743;
 <div>
 <figure class="figure">
 <p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="a-treemap-showcasing-revenue-by-state" class="level3" data-number="4.6">
+<h3 data-number="4.6" class="anchored" data-anchor-id="a-treemap-showcasing-revenue-by-state"><span class="header-section-number">4.6</span> A Treemap Showcasing Revenue by State</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#grouping sales by state</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>state_sales<span class="ot">&lt;-</span>superstore<span class="sc">%&gt;%</span><span class="fu">group_by</span>(State)<span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sales =</span> <span class="fu">sum</span>(Sales))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#creating a tree map</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>state_sales<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">area =</span> sales, <span class="at">fill =</span> sales,<span class="at">label =</span> State))<span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap</span>(<span class="at">color =</span> <span class="st">"gray85"</span>, <span class="at">size =</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_paletteer_c</span>(<span class="st">"ggthemes::Red-Green-Gold Diverging"</span>)<span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Revenue by State"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>, <span class="at">fill =</span> <span class="st">"Sales"</span>)<span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">13</span>, <span class="at">color =</span> <span class="st">"gray20"</span>),</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"italic"</span>, <span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray40"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
