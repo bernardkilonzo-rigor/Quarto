@@ -315,7 +315,7 @@ background: #023743;
   <li><a href="#a-box-plot-showcasing-revenue-distribution-by-states-in-east-region" id="toc-a-box-plot-showcasing-revenue-distribution-by-states-in-east-region" class="nav-link" data-scroll-target="#a-box-plot-showcasing-revenue-distribution-by-states-in-east-region"><span class="header-section-number">4.4</span> A Box-plot showcasing Revenue distribution by States in East Region</a></li>
   <li><a href="#a-pie-chart-showcasing-revenue-by-region" id="toc-a-pie-chart-showcasing-revenue-by-region" class="nav-link" data-scroll-target="#a-pie-chart-showcasing-revenue-by-region"><span class="header-section-number">4.5</span> A Pie chart showcasing Revenue by Region</a></li>
   <li><a href="#a-treemap-showcasing-revenue-by-state" id="toc-a-treemap-showcasing-revenue-by-state" class="nav-link" data-scroll-target="#a-treemap-showcasing-revenue-by-state"><span class="header-section-number">4.6</span> A Treemap Showcasing Revenue by State</a></li>
-  <li><a href="#histogram-density-plot-on-revenue" id="toc-histogram-density-plot-on-revenue" class="nav-link" data-scroll-target="#histogram-density-plot-on-revenue"><span class="header-section-number">4.7</span> Histogram Density plot on Revenue</a></li>
+  <li><a href="#histogram-density-plot-on-revenue" id="toc-histogram-density-plot-on-revenue" class="nav-link" data-scroll-target="#histogram-density-plot-on-revenue"><span class="header-section-number">4.7</span> Histogram &amp; Density Plot on Revenue</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -568,7 +568,7 @@ background: #023743;
 </div>
 </section>
 <section id="histogram-density-plot-on-revenue" class="level3" data-number="4.7">
-<h3 data-number="4.7" class="anchored" data-anchor-id="histogram-density-plot-on-revenue"><span class="header-section-number">4.7</span> Histogram Density plot on Revenue</h3>
+<h3 data-number="4.7" class="anchored" data-anchor-id="histogram-density-plot-on-revenue"><span class="header-section-number">4.7</span> Histogram &amp; Density Plot on Revenue</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -578,7 +578,7 @@ background: #023743;
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">linewidth =</span> <span class="fl">0.8</span>, <span class="at">color =</span><span class="st">"steelblue"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">alpha =</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="cn">NA</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="cn">NA</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram with Density Plot"</span>, <span class="at">caption =</span> <span class="st">"Viz by Bernard Kilonzo"</span>)<span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram with Density Plot"</span>, <span class="at">caption =</span> <span class="st">"Viz by Bernard Kilonzo"</span>, <span class="at">x =</span> <span class="st">"Revenue"</span>, <span class="at">y =</span> <span class="st">"Density"</span>)<span class="sc">+</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray30"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>),</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"bold"</span>,<span class="at">color =</span> <span class="st">"gray30"</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
