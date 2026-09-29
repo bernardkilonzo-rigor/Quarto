@@ -235,7 +235,7 @@ state_sales%>%ggplot(aes(area = sales, fill = sales,label = State))+
 #histogram with density plot
 superstore%>%filter(Sales<500)%>%ggplot(aes(x = Sales))+
   geom_histogram(aes(y = after_stat(density)),binwidth = 20, color="gray2",linewidth =0.2, fill ="white")+
-  geom_density(linewidth = 0.8, color ="steelblue", fill = "lightblue", alpha =0.5)+
+  geom_density(linewidth = 0.8, color ="brown", fill = "gold", alpha =0.5)+
   scale_x_continuous(limits = c(0,NA), expand = c(0,0))+
   scale_y_continuous(limits = c(0,NA), expand = c(0,0))+
   labs(title = "Histogram with Density Plot", caption = "Viz by Bernard Kilonzo", x = "Revenue", y = "Density")+
