@@ -246,3 +246,5 @@ superstore%>%filter(Sales<500)%>%ggplot(aes(x = Sales))+
         plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray35"))
 
 ```
+
+### Bubble Plot on Profit vs. Revenue vs. Discount
