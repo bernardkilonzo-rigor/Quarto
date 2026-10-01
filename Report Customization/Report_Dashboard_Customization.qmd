@@ -256,7 +256,7 @@ superstore%>%filter(Sales<500)%>%ggplot(aes(x = Sales))+
 #creating bubble chart
 superstore%>%ggplot(aes(x = Sales, y = Profit, size = Discount, color = Profit))+
   geom_point(alpha = 0.5)+
-  labs(title = "Bubble Plot", caption = "Viz By: Bernard Kilonzo",
+  labs(title = "Bubble Plot - Revenue vs. Profit vs. Discount", caption = "Viz By: Bernard Kilonzo",
        x = "Revenue")+
   theme(panel.background = element_blank(),
         axis.title = element_text(family = "serif", face = "bold", size = 10, color = "gray30"),
