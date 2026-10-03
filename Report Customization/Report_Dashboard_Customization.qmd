@@ -262,6 +262,7 @@ superstore%>%ggplot(aes(x = Sales, y = Profit, size = Discount, color = Profit))
   theme(panel.background = element_blank(),
         axis.title = element_text(family = "serif", face = "bold", size = 10, color = "gray30"),
         axis.text = element_text(family = "serif", size = 9, color = "gray30"),
+        axis.line = element_line(color = "gray30", linewidth = 0.2),
         axis.ticks = element_line(linewidth = 0.1),
         legend.title = element_text(family = "serif", size = 10, color = "gray30"),
         legend.text = element_text(family = "serif", size = 9, color = "gray30"),
