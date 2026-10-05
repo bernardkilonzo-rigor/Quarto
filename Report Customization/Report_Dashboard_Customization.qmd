@@ -270,3 +270,30 @@ superstore%>%ggplot(aes(x = Sales, y = Profit, size = Discount, color = Profit))
         plot.caption = element_text(family = "serif", face = "italic", size = 10, color = "gray40"))
 
 ```
+
+### Grouped Bar Plot on Revenue by Region by Category
+
+```{r}
+#| warning: false
+#| message: false
+
+#grouped bar chart
+superstore%>%ggplot(aes(x =Region, y = Sales, fill =Category))+
+  geom_bar(stat = "summary", fun = sum, position = "dodge", width = 0.5)+
+  scale_y_continuous(labels = comma)+
+  scale_fill_paletteer_d("nationalparkcolors::Acadia")+
+  labs(title = "Sales Performance by Product Category per Region",
+       caption = "Visualization by: Bernard Kilonzo")+
+  theme(panel.background = element_blank(),
+        axis.line = element_line(color = "gray50"),
+        axis.ticks = element_line(color = "gray50"),
+        axis.text = element_text(family = "serif", size = 9, color = "gray30"),
+        axis.title = element_text(family = "serif", face = "bold", size = 10, color = "gray30"),
+        legend.title = element_text(family = "serif", face = "bold", size = 10, color = "gray30"),
+        legend.text = element_text(family = "serif", size = 9, color = "gray30"),
+        legend.position = "top",
+        plot.title = element_text(family = "serif", face = "bold", size = 12, color = "gray30"),
+        plot.caption = element_text(family = "serif", face = "italic", size = 8),
+        )
+
+```
