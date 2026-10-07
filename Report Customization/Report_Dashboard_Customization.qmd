@@ -282,8 +282,9 @@ superstore%>%ggplot(aes(x =Region, y = Sales, fill =Category))+
   geom_bar(stat = "summary", fun = sum, position = "dodge", width = 0.5)+
   scale_y_continuous(labels = comma)+
   scale_fill_paletteer_d("nationalparkcolors::Acadia")+
-  labs(title = "Sales Performance by Product Category per Region",
-       caption = "Visualization by: Bernard Kilonzo")+
+  labs(title = "Revenue Performance by Product Category per Region",
+       caption = "Visualization by: Bernard Kilonzo",
+       y = "Revenue")+
   theme(panel.background = element_blank(),
         axis.line = element_line(color = "gray50"),
         axis.ticks = element_line(color = "gray50"),
