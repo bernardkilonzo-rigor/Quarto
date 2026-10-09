@@ -311,4 +311,24 @@ no_of_orders<- superstore%>%
   group_by(Region, Category)%>%
   summarise(orders = n_distinct(Row.ID))
 
+#visualizing orders by Region & Category using stacked bar chart
+no_of_orders%>%ggplot(aes(x =Region, y = orders, fill =Category))+
+  geom_bar(stat = "identity", position = "stack", width = 0.5)+
+  scale_y_continuous(labels = comma)+
+  scale_fill_paletteer_d("wesanderson::Chevalier1")+
+  labs(title = "Revenue Performance by Product Category per Region",
+       caption = "Visualization by: Bernard Kilonzo",
+       y = "Revenue")+
+  theme(panel.background = element_blank(),
+        axis.line = element_line(color = "gray50"),
+        axis.ticks = element_line(color = "gray50"),
+        axis.text = element_text(family = "serif", size = 9, color = "gray30"),
+        axis.title = element_text(family = "serif", face = "bold", size = 10, color = "gray30"),
+        legend.title = element_text(family = "serif", face = "bold", size = 10, color = "gray30"),
+        legend.text = element_text(family = "serif", size = 9, color = "gray30"),
+        legend.position = "top",
+        plot.title = element_text(family = "serif", face = "bold", size = 12, color = "gray30"),
+        plot.caption = element_text(family = "serif", face = "italic", size = 8),
+        )
+
 ```
