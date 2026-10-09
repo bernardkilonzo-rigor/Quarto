@@ -298,3 +298,17 @@ superstore%>%ggplot(aes(x =Region, y = Sales, fill =Category))+
         )
 
 ```
+
+### Total Orders by Region by Category
+
+```{r}
+#| warning: false
+#| message: false
+
+#computing orders by Region and category
+
+no_of_orders<- superstore%>%
+  group_by(Region, Category)%>%
+  summarise(orders = n_distinct(Row.ID))
+
+```
