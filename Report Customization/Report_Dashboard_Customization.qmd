@@ -319,6 +319,9 @@ no_of_orders%>%ggplot(aes(x =Region, y = orders, fill =Category))+
   labs(title = "Number of Orders by Product Category per Region",
        caption = "Visualization by: Bernard Kilonzo",
        y = "No. of orders")+
+  geom_text(aes(label = orders),
+            position = position_stack(vjust = 0.5),
+            size = 3)+
   theme(panel.background = element_blank(),
         axis.line = element_line(color = "gray50"),
         axis.ticks = element_line(color = "gray50"),
