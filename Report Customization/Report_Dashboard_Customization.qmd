@@ -336,7 +336,7 @@ no_of_orders%>%ggplot(aes(x =Region, y = orders, fill =Category))+
 
 ```
 
-### Revenue by Sub-Category
+### Revenue by Product Sub-Category
 
 ```{r}
 #| warning: false
@@ -346,8 +346,8 @@ no_of_orders%>%ggplot(aes(x =Region, y = orders, fill =Category))+
 superstore%>%group_by(Sub.Category)%>%
   summarise(sales = sum(Sales))%>%
   ggplot(aes(y = Sub.Category, x = sales))+
-  geom_segment(aes(x = 0, xend =sales, y = Sub.Category, yend =Sub.Category), color = "lightblue", linewidth=1.5)+
-  geom_point(size = 6, color = "steelblue")+
+  geom_segment(aes(x = 0, xend =sales, y = Sub.Category, yend =Sub.Category), color = "#D3DDDC", linewidth=1.5)+
+  geom_point(size = 6, color = "#476F84")+
   scale_x_continuous(labels = comma)+
   labs(title = "Revenue by Product Sub-Category",
        caption = "Viz by: Bernard Kilonzo",
