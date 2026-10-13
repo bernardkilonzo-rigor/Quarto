@@ -349,9 +349,9 @@ superstore%>%group_by(Sub.Category)%>%
   geom_segment(aes(x = 0, xend =sales, y = Sub.Category, yend =Sub.Category), color = "lightblue", linewidth=1.5)+
   geom_point(size = 6, color = "steelblue")+
   scale_x_continuous(labels = comma)+
-  labs(title = "Sales by Month",
+  labs(title = "Revenue by Product Sub-Category",
        caption = "Viz by: Bernard Kilonzo",
-       x = "Sales", y = "Month")+
+       x = "Revenue", y = "Sub-Category")+
   theme(panel.background = element_blank(),
         axis.title = element_text(family = "serif", size = 10, color = "gray25"),
         axis.text = element_text(family = "serif", size = 10, color = "gray25"),
