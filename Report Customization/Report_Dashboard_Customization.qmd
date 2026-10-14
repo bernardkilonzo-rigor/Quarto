@@ -359,3 +359,14 @@ superstore%>%group_by(Sub.Category)%>%
         plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray50"))
 
 ```
+
+### A Donut Chart Showcasing Revenue by Product Segment
+
+```{r}
+#| warning: false
+#| message: false
+
+#creating a donut chart on revenue by product segment.
+
+
+```
