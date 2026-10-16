@@ -402,7 +402,7 @@ superstore%>%filter(Region=="East")%>%ggplot(aes(y = State, x = Quantity, color 
   stat_boxplot(geom = "errorbar",width =0.4)+
   geom_boxplot(outlier.color = NA)+#removing the outliers
   geom_jitter(size =0.7)+
-  scale_color_paletteer_d("impressionist.colors::irissen")+
+  scale_color_paletteer_d("palettetown::snorlax")+
   labs(title = "Order Distribution by Quantity by State in East Region",
        caption = "Viz by: Bernard Kilonzo")+
   theme(panel.background = element_blank(),
