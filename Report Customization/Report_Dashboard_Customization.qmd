@@ -377,7 +377,7 @@ sales_summ%>%ggplot(aes(x = 3, y = sales, fill =Segment))+
   xlim(c(0.2, 3+0.5))+
   geom_label(aes(label = sales),family ="serif",size =3.3,color = "gray15",position = position_stack(vjust = 0.5),
              show.legend = FALSE)+
-  scale_fill_paletteer_d("wesanderson::Chevalier1")+
+  scale_fill_paletteer_d("MoMAColors::Alkalay2")+
   labs(title = "Revenue by Product Segment",
        caption = "Viz by: Bernard Kilonzo")+
   theme(panel.background = element_blank(),
