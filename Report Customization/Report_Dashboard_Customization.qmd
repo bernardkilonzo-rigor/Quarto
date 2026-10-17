@@ -391,20 +391,20 @@ sales_summ%>%ggplot(aes(x = 3, y = sales, fill =Segment))+
 
 ```
 
-### Jitter Box Plot on Order Distribution by Quantity by State
+### Jitter Box Plot on Revenue Distribution by State in East Region
 
 ```{r}
 #| warning: false
 #| message: false
 
 #creating jitter box plot
-superstore%>%filter(Region=="East")%>%ggplot(aes(y = State, x = Quantity, color = State))+
+superstore%>%filter(Region=="East")%>%ggplot(aes(y = State, x = Sales, color = State))+
   stat_boxplot(geom = "errorbar",width =0.4)+
   geom_boxplot(outlier.color = NA)+#removing the outliers
   geom_jitter(size =0.7)+
   scale_color_paletteer_d("palettetown::snorlax")+
-  labs(title = "Order Distribution by Quantity by State in East Region",
-       caption = "Viz by: Bernard Kilonzo")+
+  labs(title = "Revenue Distribution by State in East Region",
+       caption = "Viz by: Bernard Kilonzo", x = "Revenue")+
   theme(panel.background = element_blank(),
         axis.line = element_line(color = "gray30", linewidth = 0.2),
         axis.ticks = element_line(color = "gray30", linewidth = 0.2),

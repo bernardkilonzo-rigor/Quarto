@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-10-16">
+<meta name="dcterms.date" content="2026-10-17">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">October 16, 2026</p>
+              <p class="date">October 17, 2026</p>
             </div>
           </div>
           
@@ -321,7 +321,7 @@ background: #023743;
   <li><a href="#total-orders-by-region-by-category" id="toc-total-orders-by-region-by-category" class="nav-link" data-scroll-target="#total-orders-by-region-by-category"><span class="header-section-number">4.10</span> Total Orders by Region by Category</a></li>
   <li><a href="#revenue-by-product-sub-category" id="toc-revenue-by-product-sub-category" class="nav-link" data-scroll-target="#revenue-by-product-sub-category"><span class="header-section-number">4.11</span> Revenue by Product Sub-Category</a></li>
   <li><a href="#a-donut-chart-showcasing-revenue-by-product-segment" id="toc-a-donut-chart-showcasing-revenue-by-product-segment" class="nav-link" data-scroll-target="#a-donut-chart-showcasing-revenue-by-product-segment"><span class="header-section-number">4.12</span> A Donut Chart Showcasing Revenue by Product Segment</a></li>
-  <li><a href="#jitter-box-plot-on-order-distribution-by-quantity-by-state" id="toc-jitter-box-plot-on-order-distribution-by-quantity-by-state" class="nav-link" data-scroll-target="#jitter-box-plot-on-order-distribution-by-quantity-by-state"><span class="header-section-number">4.13</span> Jitter Box Plot on Order Distribution by Quantity by State</a></li>
+  <li><a href="#jitter-box-plot-on-revenue-distribution-by-state-in-east-region" id="toc-jitter-box-plot-on-revenue-distribution-by-state-in-east-region" class="nav-link" data-scroll-target="#jitter-box-plot-on-revenue-distribution-by-state-in-east-region"><span class="header-section-number">4.13</span> Jitter Box Plot on Revenue Distribution by State in East Region</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -774,19 +774,19 @@ background: #023743;
 </div>
 </div>
 </section>
-<section id="jitter-box-plot-on-order-distribution-by-quantity-by-state" class="level3" data-number="4.13">
-<h3 data-number="4.13" class="anchored" data-anchor-id="jitter-box-plot-on-order-distribution-by-quantity-by-state"><span class="header-section-number">4.13</span> Jitter Box Plot on Order Distribution by Quantity by State</h3>
+<section id="jitter-box-plot-on-revenue-distribution-by-state-in-east-region" class="level3" data-number="4.13">
+<h3 data-number="4.13" class="anchored" data-anchor-id="jitter-box-plot-on-revenue-distribution-by-state-in-east-region"><span class="header-section-number">4.13</span> Jitter Box Plot on Revenue Distribution by State in East Region</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating jitter box plot</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>superstore<span class="sc">%&gt;%</span><span class="fu">filter</span>(Region<span class="sc">==</span><span class="st">"East"</span>)<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> State, <span class="at">x =</span> Quantity, <span class="at">color =</span> State))<span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>superstore<span class="sc">%&gt;%</span><span class="fu">filter</span>(Region<span class="sc">==</span><span class="st">"East"</span>)<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> State, <span class="at">x =</span> Sales, <span class="at">color =</span> State))<span class="sc">+</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_boxplot</span>(<span class="at">geom =</span> <span class="st">"errorbar"</span>,<span class="at">width =</span><span class="fl">0.4</span>)<span class="sc">+</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.color =</span> <span class="cn">NA</span>)<span class="sc">+</span><span class="co">#removing the outliers</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">size =</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_paletteer_d</span>(<span class="st">"palettetown::snorlax"</span>)<span class="sc">+</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Order Distribution by Quantity by State in East Region"</span>,</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>)<span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Revenue Distribution by State in East Region"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>, <span class="at">x =</span> <span class="st">"Revenue"</span>)<span class="sc">+</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray30"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>),</span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray30"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>),</span>
