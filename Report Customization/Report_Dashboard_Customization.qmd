@@ -482,3 +482,30 @@ superstore%>%filter(Region=="Central")%>%ggplot(aes(y = State, x = Sales, color 
         plot.title = element_text(family = "serif", face = "bold", size = 13, color = "gray25"),
         plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray35"))
 ```
+
+### Error Bars on Revenue by Product Sub-Category
+
+```{r}
+#| warning: false
+#| message: false
+
+#preparing sample data set
+computed_data<-superstore%>%
+  group_by(Sub.Category)%>%
+  summarise(mean = mean(Sales), se =sd(Sales)/sqrt(n()))
+
+#creating error bars from mean & standard error (or SD)
+computed_data%>%ggplot(aes(y = Sub.Category, x = mean))+
+  geom_bar(stat = "identity", fill = "gray70")+
+  geom_errorbar(aes(xmin = mean-se, xmax = mean+se))+
+  labs(title = "Error Bars Plot", x = "Mean", y = "Sub Category",
+       caption = "Viz By: Bernard Kilonzo")+
+  theme(
+    panel.background = element_blank(),
+    axis.ticks = element_line(color = "gray50", linewidth =0.1),
+    axis.line = element_line(color = "gray50", linewidth =0.1),
+    plot.title = element_text(family = "serif", face = "bold"),
+    plot.caption = element_text(family = "serif", face = "italic", color = "gray40")
+  )
+
+```

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-10-21">
+<meta name="dcterms.date" content="2026-10-23">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">October 21, 2026</p>
+              <p class="date">October 23, 2026</p>
             </div>
           </div>
           
@@ -322,6 +322,7 @@ background: #023743;
   <li><a href="#revenue-by-product-sub-category" id="toc-revenue-by-product-sub-category" class="nav-link" data-scroll-target="#revenue-by-product-sub-category"><span class="header-section-number">4.11</span> Revenue by Product Sub-Category</a></li>
   <li><a href="#a-donut-chart-showcasing-revenue-by-product-segment" id="toc-a-donut-chart-showcasing-revenue-by-product-segment" class="nav-link" data-scroll-target="#a-donut-chart-showcasing-revenue-by-product-segment"><span class="header-section-number">4.12</span> A Donut Chart Showcasing Revenue by Product Segment</a></li>
   <li><a href="#jitter-box-plot-on-revenue-distribution-by-state" id="toc-jitter-box-plot-on-revenue-distribution-by-state" class="nav-link" data-scroll-target="#jitter-box-plot-on-revenue-distribution-by-state"><span class="header-section-number">4.13</span> Jitter Box Plot on Revenue Distribution by State</a></li>
+  <li><a href="#error-bars-on-revenue-by-product-sub-category" id="toc-error-bars-on-revenue-by-product-sub-category" class="nav-link" data-scroll-target="#error-bars-on-revenue-by-product-sub-category"><span class="header-section-number">4.14</span> Error Bars on Revenue by Product Sub-Category</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -884,6 +885,39 @@ background: #023743;
 <div>
 <figure class="figure">
 <p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="error-bars-on-revenue-by-product-sub-category" class="level3" data-number="4.14">
+<h3 data-number="4.14" class="anchored" data-anchor-id="error-bars-on-revenue-by-product-sub-category"><span class="header-section-number">4.14</span> Error Bars on Revenue by Product Sub-Category</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#preparing sample data set</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>computed_data<span class="ot">&lt;-</span>superstore<span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sub.Category)<span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Sales), <span class="at">se =</span><span class="fu">sd</span>(Sales)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#creating error bars from mean &amp; standard error (or SD)</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>computed_data<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> Sub.Category, <span class="at">x =</span> mean))<span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"gray70"</span>)<span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> mean<span class="sc">-</span>se, <span class="at">xmax =</span> mean<span class="sc">+</span>se))<span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error Bars Plot"</span>, <span class="at">x =</span> <span class="st">"Mean"</span>, <span class="at">y =</span> <span class="st">"Sub Category"</span>,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz By: Bernard Kilonzo"</span>)<span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray50"</span>, <span class="at">linewidth =</span><span class="fl">0.1</span>),</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray50"</span>, <span class="at">linewidth =</span><span class="fl">0.1</span>),</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"italic"</span>, <span class="at">color =</span> <span class="st">"gray40"</span>)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
