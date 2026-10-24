@@ -496,7 +496,7 @@ computed_data<-superstore%>%
 
 #creating error bars from mean & standard error (or SD)
 computed_data%>%ggplot(aes(y = Sub.Category, x = mean))+
-  geom_bar(stat = "identity", fill = "gray70")+
+  geom_bar(stat = "identity", fill = "#B8B69E")+
   geom_errorbar(aes(xmin = mean-se, xmax = mean+se))+
   labs(title = "Error Bars Plot - Mean & Standard Deviation (SD)", x = "Mean", y = "Sub Category",
        caption = "Viz By: Bernard Kilonzo")+
