@@ -498,7 +498,7 @@ computed_data<-superstore%>%
 computed_data%>%ggplot(aes(y = Sub.Category, x = mean))+
   geom_bar(stat = "identity", fill = "gray70")+
   geom_errorbar(aes(xmin = mean-se, xmax = mean+se))+
-  labs(title = "Error Bars Plot", x = "Mean", y = "Sub Category",
+  labs(title = "Error Bars Plot - Mean & Standard Deviation (SD)", x = "Mean", y = "Sub Category",
        caption = "Viz By: Bernard Kilonzo")+
   theme(
     panel.background = element_blank(),
