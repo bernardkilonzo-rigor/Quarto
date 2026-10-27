@@ -510,7 +510,7 @@ computed_data%>%ggplot(aes(y = Sub.Category, x = mean))+
 
 ```
 
-### Boxplot & Violin Plot on Orders by Region
+### Boxplot & Violin Plot on Order's Quantity by Region
 
 ```{r}
 #| warning: false
