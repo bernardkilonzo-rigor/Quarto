@@ -534,3 +534,13 @@ superstore%>%ggplot(aes(x =Region, y =Quantity, color =Region))+
         plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray40"))
 
 ```
+
+### Diverging Bar Plot on Revenue between 2019 & 2020
+
+```{r}
+#| message: false
+#| warning: false
+
+
+
+```
