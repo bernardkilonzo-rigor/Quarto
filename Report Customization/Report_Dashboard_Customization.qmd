@@ -535,12 +535,18 @@ superstore%>%ggplot(aes(x =Region, y =Quantity, color =Region))+
 
 ```
 
-### Diverging Bar Plot on Revenue between 2019 & 2020
+### Diverging Bar Plot on Profitable Vs. Unprofitable Product Sub-Category
 
 ```{r}
 #| message: false
 #| warning: false
 
+#computing profit by sub-category in the central region
+profitability<-superstore%>%filter(Region=="Central")%>%
+  group_by(Sub.Category)%>%
+  summarise(profit =sum(Profit))
 
+#categorizing profit values
+profitability$type<-ifelse(profitability$profit >= 0, "Profitable", "Unprofitable")
 
 ```

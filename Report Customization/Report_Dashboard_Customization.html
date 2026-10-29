@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-10-28">
+<meta name="dcterms.date" content="2026-10-29">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">October 28, 2026</p>
+              <p class="date">October 29, 2026</p>
             </div>
           </div>
           
@@ -324,6 +324,7 @@ background: #023743;
   <li><a href="#jitter-box-plot-on-revenue-distribution-by-state" id="toc-jitter-box-plot-on-revenue-distribution-by-state" class="nav-link" data-scroll-target="#jitter-box-plot-on-revenue-distribution-by-state"><span class="header-section-number">4.13</span> Jitter Box Plot on Revenue Distribution by State</a></li>
   <li><a href="#error-bars-on-revenue-by-product-sub-category" id="toc-error-bars-on-revenue-by-product-sub-category" class="nav-link" data-scroll-target="#error-bars-on-revenue-by-product-sub-category"><span class="header-section-number">4.14</span> Error Bars on Revenue by Product Sub-Category</a></li>
   <li><a href="#boxplot-violin-plot-on-orders-quantity-by-region" id="toc-boxplot-violin-plot-on-orders-quantity-by-region" class="nav-link" data-scroll-target="#boxplot-violin-plot-on-orders-quantity-by-region"><span class="header-section-number">4.15</span> Boxplot &amp; Violin Plot on Order’s Quantity by Region</a></li>
+  <li><a href="#diverging-bar-plot-on-revenue-between-2019-2020" id="toc-diverging-bar-plot-on-revenue-between-2019-2020" class="nav-link" data-scroll-target="#diverging-bar-plot-on-revenue-between-2019-2020"><span class="header-section-number">4.16</span> Diverging Bar Plot on Revenue between 2019 &amp; 2020</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -950,6 +951,47 @@ background: #023743;
 <div>
 <figure class="figure">
 <p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="diverging-bar-plot-on-revenue-between-2019-2020" class="level3" data-number="4.16">
+<h3 data-number="4.16" class="anchored" data-anchor-id="diverging-bar-plot-on-revenue-between-2019-2020"><span class="header-section-number">4.16</span> Diverging Bar Plot on Revenue between 2019 &amp; 2020</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>superstore<span class="sc">$</span>Order.Date<span class="ot">&lt;-</span><span class="fu">as.Date</span>(superstore<span class="sc">$</span>Order.Date, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#computing profit by sub-category in the central region</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>profitability<span class="ot">&lt;-</span>superstore<span class="sc">%&gt;%</span><span class="fu">filter</span>(Region<span class="sc">==</span><span class="st">"Central"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sub.Category)<span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">profit =</span><span class="fu">sum</span>(Profit))</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#categorizing profit values</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>profitability<span class="sc">$</span>type<span class="ot">&lt;-</span><span class="fu">ifelse</span>(profitability<span class="sc">$</span>profit <span class="sc">&gt;=</span> <span class="dv">0</span>, <span class="st">"Profitable"</span>, <span class="st">"Unprofitable"</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">#creating diverging bar plot</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>profitability<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">reorder</span>(Sub.Category, profit), <span class="at">x =</span> profit, <span class="at">fill =</span> type)) <span class="sc">+</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Profitable"</span> <span class="ot">=</span> <span class="st">"steelblue"</span>, <span class="st">"Unprofitable"</span> <span class="ot">=</span> <span class="st">"tomato"</span>))<span class="sc">+</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Profitability by Sub-Category"</span>,</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Profit"</span>, <span class="at">y =</span> <span class="st">"Sub-Category"</span>, <span class="at">fill =</span> <span class="st">"Legend"</span>,</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>)<span class="sc">+</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray50"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>),</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"gray50"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>),</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"bold"</span>,<span class="at">size =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"gray40"</span>),</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray40"</span>),</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"gray30"</span>),</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray35"</span>),</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">13</span>, <span class="at">color =</span> <span class="st">"gray25"</span>),</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"italic"</span>, <span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray40"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
