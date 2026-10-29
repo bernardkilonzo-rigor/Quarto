@@ -535,7 +535,7 @@ superstore%>%ggplot(aes(x =Region, y =Quantity, color =Region))+
 
 ```
 
-### Diverging Bar Plot on Profitable Vs. Unprofitable Product Sub-Category
+### Diverging Bar Plot on Profitable Vs. Unprofitable Product Sub-Category (Central Region)
 
 ```{r}
 #| message: false
