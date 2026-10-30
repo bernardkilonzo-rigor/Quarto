@@ -552,7 +552,7 @@ profitability$type<-ifelse(profitability$profit >= 0, "Profitable", "Unprofitabl
 #creating diverging bar plot
 profitability%>%ggplot(aes(y = reorder(Sub.Category, profit), x = profit, fill = type)) +
   geom_bar(stat = "identity") +
-  scale_fill_manual(values = c("Profitable" = "steelblue", "Unprofitable" = "tomato"))+
+  scale_fill_manual(values = c("Profitable" = "#446455", "Unprofitable" = "#FDD262"))+
   labs(title = "Profitability by Sub-Category",
        x = "Profit", y = "Sub-Category", fill = "Legend",
        caption = "Viz by: Bernard Kilonzo")+
