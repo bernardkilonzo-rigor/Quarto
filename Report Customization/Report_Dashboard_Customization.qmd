@@ -556,7 +556,7 @@ profitability%>%ggplot(aes(y = reorder(Sub.Category, profit), x = profit, fill =
   labs(title = "Profitability by Sub-Category",
        x = "Profit", y = "Sub-Category", fill = "Legend",
        caption = "Viz by: Bernard Kilonzo")+
-  geom_text(aes(label = round(profit,1)), color = "gray25",size = 3)+
+  geom_text(aes(label = round(profit,0)), color = "gray25",size = 3)+
   theme(panel.background = element_blank(),
         axis.line = element_line(color = "gray50", linewidth = 0.2),
         axis.ticks = element_line(colour = "gray50", linewidth = 0.2),
