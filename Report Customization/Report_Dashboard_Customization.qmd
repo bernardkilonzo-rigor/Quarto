@@ -569,3 +569,14 @@ profitability%>%ggplot(aes(y = reorder(Sub.Category, profit), x = profit, fill =
 
 
 ```
+
+```{r}
+#| message: false
+#| warning: false
+
+#summarizing revenue and profit performance by Region
+summary_metrics<-superstore%>%group_by(Region)%>%
+  summarise(Revenue = sum(Sales),
+            Profit = sum(Profit))
+
+```
