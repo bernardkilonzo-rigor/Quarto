@@ -589,7 +589,7 @@ long_summary_metrics<-summary_metrics%>%
 long_summary_metrics%>%ggplot(aes(y =Region, x = Values_1, fill = Category))+
   geom_bar(stat = "identity")+
   scale_x_continuous(labels = abs)+
-  scale_fill_manual(values = c("tomato","steelblue"))+
+  scale_fill_manual(values = c("#446455","#FDD262"))+
   labs(title = "Diverging Bar Chart - Revenue vs. Profit", x ="Values", y = "Region",
        caption = "Viz By: Bernard Kilonzo", fill ="Legend")+
   theme(panel.background = element_blank(),
