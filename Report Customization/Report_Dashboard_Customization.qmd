@@ -604,3 +604,13 @@ long_summary_metrics%>%ggplot(aes(y =Region, x = Values_1, fill = Category))+
         plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray40"))
 
 ```
+
+### Dumbbell Plot on Revenue Vs. Profit by Product Sub-Category
+
+```{r}
+#| warning: false
+#| message: false
+
+
+
+```
