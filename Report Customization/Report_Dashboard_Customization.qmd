@@ -613,16 +613,16 @@ long_summary_metrics%>%ggplot(aes(y =Region, x = Values_1, fill = Category))+
 
 #Summarizing Sales and Profit by Sub.Category
 superstore_v1<-superstore%>%group_by(Sub.Category)%>%
-  summarise(sales = sum(Sales), profit = sum(Profit))
+  summarise(revenue = sum(Sales), profit = sum(Profit))
 
 #creating dumbbell plot
 ggplot(superstore_v1)+
-  geom_segment(aes(x = profit, xend = sales, y = Sub.Category, yend =Sub.Category),color = "gray65")+
+  geom_segment(aes(x = profit, xend = revenue, y = Sub.Category, yend =Sub.Category),color = "gray65")+
   geom_point(aes(x = profit, y = Sub.Category,color ="profit"), size =4)+
-  geom_point(aes(x = sales, y = Sub.Category,color = "sales"), size = 4)+
-  scale_color_manual(values = c("sales"="steelblue","profit"="brown"))+
+  geom_point(aes(x = revenue, y = Sub.Category,color = "revenue"), size = 4)+
+  scale_color_manual(values = c("revenue"="steelblue","profit"="brown"))+
   scale_x_continuous(labels = comma)+
-labs(title = "Sales and Profit Comparison by Sub-Category",
+labs(title = "Revenue and Profit Comparison by Sub-Category",
        caption = "Viz by: Bernard Kilonzo",
        x = "value", y = "Sub-Category", color = "Metric")+
   theme(panel.background = element_blank(),
