@@ -615,4 +615,24 @@ long_summary_metrics%>%ggplot(aes(y =Region, x = Values_1, fill = Category))+
 superstore_v1<-superstore%>%group_by(Sub.Category)%>%
   summarise(sales = sum(Sales), profit = sum(Profit))
 
+#creating dumbbell plot
+ggplot(superstore_v1)+
+  geom_segment(aes(x = profit, xend = sales, y = Sub.Category, yend =Sub.Category),color = "gray65")+
+  geom_point(aes(x = profit, y = Sub.Category,color ="profit"), size =4)+
+  geom_point(aes(x = sales, y = Sub.Category,color = "sales"), size = 4)+
+  scale_color_manual(values = c("sales"="steelblue","profit"="brown"))+
+  scale_x_continuous(labels = comma)+
+labs(title = "Sales and Profit Comparison by Sub-Category",
+       caption = "Viz by: Bernard Kilonzo",
+       x = "value", y = "Sub-Category", color = "Metric")+
+  theme(panel.background = element_blank(),
+        axis.line = element_line(color = "gray45"),
+        axis.ticks = element_line(color = "gray45"),
+        axis.text = element_text(family = "serif", color = "gray35", size = 9),
+        axis.title = element_text(family = "serif", color = "gray25", size = 10),
+        legend.text = element_text(family = "serif", color = "gray35", size = 9),
+        legend.title = element_text(family = "serif", color = "gray25", size = 10),
+        plot.title = element_text(family = "serif", face = "bold", size = 12, color = "gray20"),
+        plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray25"))
+
 ```
