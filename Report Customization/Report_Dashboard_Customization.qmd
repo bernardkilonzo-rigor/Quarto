@@ -611,6 +611,8 @@ long_summary_metrics%>%ggplot(aes(y =Region, x = Values_1, fill = Category))+
 #| warning: false
 #| message: false
 
-
+#Summarizing Sales and Profit by Sub.Category
+superstore_v1<-superstore%>%group_by(Sub.Category)%>%
+  summarise(sales = sum(Sales), profit = sum(Profit))
 
 ```
