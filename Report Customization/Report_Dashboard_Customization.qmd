@@ -646,6 +646,9 @@ labs(title = "Revenue and Profit Comparison by Sub-Category",
 superstore_v2<-superstore%>%group_by(Region)%>%
   summarise(sales = sum(Sales), profit = sum(Profit), quantity = sum(Quantity))
 
+#shaping the data through pivoting
+superstore_v2<-superstore_v2%>%
+  pivot_longer(sales:quantity, names_to = "group", values_to = "values")
 
 
 ```
