@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-11-14">
+<meta name="dcterms.date" content="2026-11-16">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">November 14, 2026</p>
+              <p class="date">November 16, 2026</p>
             </div>
           </div>
           
@@ -1073,6 +1073,19 @@ background: #023743;
 </figure>
 </div>
 </div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Dumbbell chart comparing more than two values</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summarizing sales, profit and quantity by Region</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>superstore_v2<span class="ot">&lt;-</span>superstore<span class="sc">%&gt;%</span><span class="fu">group_by</span>(Region)<span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sales =</span> <span class="fu">sum</span>(Sales), <span class="at">profit =</span> <span class="fu">sum</span>(Profit), <span class="at">quantity =</span> <span class="fu">sum</span>(Quantity))</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">#shaping the data through pivoting</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>superstore_v2<span class="ot">&lt;-</span>superstore_v2<span class="sc">%&gt;%</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(sales<span class="sc">:</span>quantity, <span class="at">names_to =</span> <span class="st">"group"</span>, <span class="at">values_to =</span> <span class="st">"values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 </section>

@@ -652,3 +652,14 @@ superstore_v2<-superstore_v2%>%
 
 
 ```
+
+```{r}
+#| warning: false
+#| message: false
+
+#Dumbbell chart comparing more than two values
+#summarizing sales, profit and quantity by Region
+superstore_v2<-superstore%>%group_by(Region)%>%
+  summarise(sales = sum(Sales), profit = sum(Profit), quantity = sum(Quantity))
+
+```
