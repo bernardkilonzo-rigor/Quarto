@@ -644,27 +644,11 @@ labs(title = "Revenue and Profit Comparison by Sub-Category",
 #Dumbbell chart comparing more than two values
 #summarizing sales, profit and quantity by Region
 superstore_v2<-superstore%>%group_by(Region)%>%
-  summarise(sales = sum(Sales), profit = sum(Profit), quantity = sum(Quantity))
+  summarise(revenue = sum(Sales), profit = sum(Profit), quantity = sum(Quantity))
 
 #shaping the data through pivoting
 superstore_v2<-superstore_v2%>%
-  pivot_longer(sales:quantity, names_to = "group", values_to = "values")
-
-
-```
-
-```{r}
-#| warning: false
-#| message: false
-
-#Dumbbell chart comparing more than two values
-#summarizing sales, profit and quantity by Region
-superstore_v2<-superstore%>%group_by(Region)%>%
-  summarise(sales = sum(Sales), revenue = sum(Profit), quantity = sum(Quantity))
-
-#shaping the data through pivoting
-superstore_v2<-superstore_v2%>%
-  pivot_longer(sales:quantity, names_to = "group", values_to = "values")
+  pivot_longer(revenue:quantity, names_to = "group", values_to = "values")
 
 #creating the plot.
 superstore_v2%>%ggplot(aes(x = values, y = Region, color = group))+
@@ -672,7 +656,7 @@ superstore_v2%>%ggplot(aes(x = values, y = Region, color = group))+
   geom_point(size = 5)+
   scale_color_manual(values = c("brown","#72874e","steelblue"))+
   scale_x_continuous(labels = comma)+
-labs(title = "Profit vs. Sales vs. Quantity by Region",
+labs(title = "Profit vs. Revenue vs. Quantity by Region",
        caption = "Viz by: Bernard Kilonzo",
        x = "value", y = "Region", color ="Metrics")+
   theme(panel.background = element_blank(),
