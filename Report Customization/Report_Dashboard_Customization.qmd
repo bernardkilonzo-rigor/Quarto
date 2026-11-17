@@ -660,7 +660,7 @@ superstore_v2<-superstore_v2%>%
 #Dumbbell chart comparing more than two values
 #summarizing sales, profit and quantity by Region
 superstore_v2<-superstore%>%group_by(Region)%>%
-  summarise(sales = sum(Sales), profit = sum(Profit), quantity = sum(Quantity))
+  summarise(sales = sum(Sales), revenue = sum(Profit), quantity = sum(Quantity))
 
 #shaping the data through pivoting
 superstore_v2<-superstore_v2%>%
