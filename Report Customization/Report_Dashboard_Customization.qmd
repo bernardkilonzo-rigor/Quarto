@@ -620,7 +620,7 @@ ggplot(superstore_v1)+
   geom_segment(aes(x = Profit, xend = Revenue, y = Sub.Category, yend =Sub.Category),color = "gray65")+
   geom_point(aes(x = Profit, y = Sub.Category,color ="Profit"), size =4)+
   geom_point(aes(x = Revenue, y = Sub.Category,color = "Revenue"), size = 4)+
-  scale_color_manual(values = c("Revenue"="steelblue","Profit"="brown"))+
+  scale_color_manual(values = c("Revenue"="#446455","Profit"="#FDD262"))+
   scale_x_continuous(labels = comma)+
 labs(title = "Revenue and Profit Comparison by Sub-Category",
        caption = "Viz by: Bernard Kilonzo",
@@ -654,7 +654,7 @@ superstore_v2<-superstore_v2%>%
 superstore_v2%>%ggplot(aes(x = values, y = Region, color = group))+
   geom_line(aes(group = Region), color = "gray")+
   geom_point(size = 5)+
-  scale_color_manual(values = c("brown","#72874e","steelblue"))+
+  scale_color_manual(values = c("#FDD262","#D3DDDC","#446455"))+
   scale_x_continuous(labels = comma)+
 labs(title = "Profit vs. Revenue vs. Quantity by Region",
        caption = "Viz by: Bernard Kilonzo",

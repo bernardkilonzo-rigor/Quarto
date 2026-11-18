@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-11-17">
+<meta name="dcterms.date" content="2026-11-18">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">November 17, 2026</p>
+              <p class="date">November 18, 2026</p>
             </div>
           </div>
           
@@ -1051,7 +1051,7 @@ background: #023743;
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> Profit, <span class="at">xend =</span> Revenue, <span class="at">y =</span> Sub.Category, <span class="at">yend =</span>Sub.Category),<span class="at">color =</span> <span class="st">"gray65"</span>)<span class="sc">+</span></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Profit, <span class="at">y =</span> Sub.Category,<span class="at">color =</span><span class="st">"Profit"</span>), <span class="at">size =</span><span class="dv">4</span>)<span class="sc">+</span></span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Revenue, <span class="at">y =</span> Sub.Category,<span class="at">color =</span> <span class="st">"Revenue"</span>), <span class="at">size =</span> <span class="dv">4</span>)<span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Revenue"</span><span class="ot">=</span><span class="st">"steelblue"</span>,<span class="st">"Profit"</span><span class="ot">=</span><span class="st">"brown"</span>))<span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Revenue"</span><span class="ot">=</span><span class="st">"#446455"</span>,<span class="st">"Profit"</span><span class="ot">=</span><span class="st">"#FDD262"</span>))<span class="sc">+</span></span>
 <span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> comma)<span class="sc">+</span></span>
 <span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Revenue and Profit Comparison by Sub-Category"</span>,</span>
 <span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>,</span>
@@ -1090,7 +1090,7 @@ background: #023743;
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>superstore_v2<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> values, <span class="at">y =</span> Region, <span class="at">color =</span> group))<span class="sc">+</span></span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> Region), <span class="at">color =</span> <span class="st">"gray"</span>)<span class="sc">+</span></span>
 <span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>)<span class="sc">+</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"brown"</span>,<span class="st">"#72874e"</span>,<span class="st">"steelblue"</span>))<span class="sc">+</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FDD262"</span>,<span class="st">"#D3DDDC"</span>,<span class="st">"#446455"</span>))<span class="sc">+</span></span>
 <span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> comma)<span class="sc">+</span></span>
 <span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Profit vs. Revenue vs. Quantity by Region"</span>,</span>
 <span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>,</span>
