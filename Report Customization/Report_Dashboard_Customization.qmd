@@ -36,17 +36,20 @@ library(tidyverse)
 library(paletteer)
 library(scales)
 library(treemapify)
+library(ggcorrplot)
 ```
 
 ## The Data
 
-This section loads Sample - Superstore data set used in this document.
+This section loads data sets used in this document.
 
 ```{r}
 #| message: false
 #| warning: false
 
 superstore<-read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/main/data/Sample%20-%20Superstore.csv")
+
+corr_data<-read.csv("https://raw.githubusercontent.com/bernardkilonzo-rigor/dataviz/refs/heads/main/data/Correlation%20matrix.csv")
 
 ```
 
@@ -668,5 +671,15 @@ labs(title = "Profit vs. Revenue vs. Quantity by Region",
         legend.title = element_text(family = "serif", color = "gray35", size = 10),
         plot.title = element_text(family = "serif", face = "bold", color = "gray25", size = 14),
         plot.caption = element_text(family = "serif", face = "italic", color = "gray35", size = 9))
+
+```
+
+### Correlation Matrix 
+
+```{r}
+#| message: false
+#| warning: false
+
+
 
 ```
