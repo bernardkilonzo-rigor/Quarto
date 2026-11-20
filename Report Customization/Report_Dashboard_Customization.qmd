@@ -674,12 +674,25 @@ labs(title = "Profit vs. Revenue vs. Quantity by Region",
 
 ```
 
-### Correlation Matrix 
+### Correlation Matrix
 
 ```{r}
 #| message: false
 #| warning: false
 
+#computing the correlation matrix
+corr_matrix<-cor(corr_data)
 
+#Creating correlation matrix (plot type full)
+ggcorrplot(corr_matrix, method = "square", type = "full",
+           lab = TRUE, lab_size = 3.5, lab_col = "gray15",
+           colors = c("brown","gray","steelblue"),
+           legend.title = "correlation")+
+  labs(caption = "Viz by: Bernard Kilonzo", title ="Correlation Matrix Plot")+
+  theme(axis.text = element_text(family = "serif", size = 9, color = "gray35"),
+        legend.title = element_text(family = "serif", size = 9, color = "gray35"),
+        legend.text = element_text(family = "serif", size = 8, colour = "gray35"),
+        plot.title = element_text(family = "serif",face = "bold", size = 14, color = "gray25"),
+        plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray35"))
 
 ```
