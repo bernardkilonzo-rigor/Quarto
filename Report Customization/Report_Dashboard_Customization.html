@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-11-20">
+<meta name="dcterms.date" content="2026-11-21">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">November 20, 2026</p>
+              <p class="date">November 21, 2026</p>
             </div>
           </div>
           
@@ -1142,6 +1142,30 @@ background: #023743;
 <div>
 <figure class="figure">
 <p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating correlation matrix_v2 (plot type = upper)</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(corr_matrix, <span class="at">method =</span> <span class="st">"square"</span>, <span class="at">type =</span> <span class="st">"upper"</span>,<span class="co">#changing type to "upper"</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">lab =</span> <span class="cn">TRUE</span>, <span class="at">lab_size =</span> <span class="fl">3.5</span>, <span class="at">lab_col =</span> <span class="st">"gray15"</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"brown"</span>,<span class="st">"gray"</span>,<span class="st">"steelblue"</span>),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">legend.title =</span> <span class="st">"correlation"</span>)<span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Viz by: Bernard Kilonzo"</span>, <span class="at">title =</span><span class="st">"Correlation Matrix Plot"</span>)<span class="sc">+</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray35"</span>),</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray95"</span>, <span class="at">linewidth =</span> <span class="fl">0.3</span>),</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray35"</span>),</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">colour =</span> <span class="st">"gray35"</span>),</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>,<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">color =</span> <span class="st">"gray25"</span>),</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"italic"</span>, <span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray35"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Report_Dashboard_Customization_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

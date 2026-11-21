@@ -696,3 +696,22 @@ ggcorrplot(corr_matrix, method = "square", type = "full",
         plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray35"))
 
 ```
+
+```{r}
+#| warning: false
+#| message: false
+
+#creating correlation matrix_v2 (plot type = upper)
+ggcorrplot(corr_matrix, method = "square", type = "upper",#changing type to "upper"
+           lab = TRUE, lab_size = 3.5, lab_col = "gray15",
+           colors = c("brown","gray","steelblue"),
+           legend.title = "correlation")+
+  labs(caption = "Viz by: Bernard Kilonzo", title ="Correlation Matrix Plot")+
+  theme(axis.text = element_text(family = "serif", size = 9, color = "gray35"),
+        panel.grid = element_line(color = "gray95", linewidth = 0.3),
+        legend.title = element_text(family = "serif", size = 9, color = "gray35"),
+        legend.text = element_text(family = "serif", size = 8, colour = "gray35"),
+        plot.title = element_text(family = "serif",face = "bold", size = 14, color = "gray25"),
+        plot.caption = element_text(family = "serif", face = "italic", size = 9, color = "gray35"))
+
+```
