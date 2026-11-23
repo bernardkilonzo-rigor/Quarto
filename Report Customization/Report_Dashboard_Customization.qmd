@@ -706,7 +706,7 @@ ggcorrplot(corr_matrix, method = "square", type = "upper",#changing type to "upp
            lab = TRUE, lab_size = 3.5, lab_col = "gray15",
            colors = c("brown","gray","steelblue"),
            legend.title = "correlation")+
-  labs(caption = "Viz by: Bernard Kilonzo", title ="Correlation Matrix Plot")+
+  labs(caption = "Viz by: Bernard Kilonzo", title ="Upper - Correlation Matrix Plot")+
   theme(axis.text = element_text(family = "serif", size = 9, color = "gray35"),
         panel.grid = element_line(color = "gray95", linewidth = 0.3),
         legend.title = element_text(family = "serif", size = 9, color = "gray35"),
@@ -725,7 +725,7 @@ ggcorrplot(corr_matrix, method = "square", type = "lower",#changing type to "low
            lab = TRUE, lab_size = 3.5, lab_col = "gray15",
            colors = c("brown","gray","steelblue"),
            legend.title = "correlation")+
-  labs(caption = "Viz by: Bernard Kilonzo", title ="Correlation Matrix Plot")+
+  labs(caption = "Viz by: Bernard Kilonzo", title ="Lower - Correlation Matrix Plot")+
   theme(axis.text = element_text(family = "serif", size = 9, color = "gray35"),
         panel.grid = element_line(color = "gray95", linewidth = 0.3),
         legend.title = element_text(family = "serif", size = 9, color = "gray35"),
@@ -744,7 +744,7 @@ ggcorrplot(corr_matrix, method = "circle", type = "lower",#method=circle & type=
            lab = TRUE, lab_size = 3, lab_col = "gray15",
            colors = c("brown","gray","steelblue"),
            legend.title = "correlation")+
-  labs(caption = "Viz by: Bernard Kilonzo", title ="Correlation Matrix Plot")+
+  labs(caption = "Viz by: Bernard Kilonzo", title ="Lower - Correlation Matrix Plot")+
   theme(axis.text = element_text(family = "serif", size = 9, color = "gray35"),
         panel.grid = element_line(color = "gray95", linewidth = 0.3),
         legend.title = element_text(family = "serif", size = 9, color = "gray35"),
