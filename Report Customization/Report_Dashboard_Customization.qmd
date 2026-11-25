@@ -785,3 +785,17 @@ superstore%>%ggplot(aes(x = Region, y = Discount))+
 
 
 ```
+
+### Cluster Analysis
+
+```{r}
+#| warning: false
+#| message: false
+
+#extracting the numerical variables (sales & profit)
+data_num <-superstore[,c("Sales","Profit")]
+
+#running K-means clustering
+km <- kmeans(data_num, centers = 4, nstart = 25)
+
+```
