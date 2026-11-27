@@ -796,7 +796,7 @@ superstore%>%ggplot(aes(x = Region, y = Discount))+
 data_num <-superstore[,c("Sales","Profit")]
 
 #running K-means clustering
-km <- kmeans(data_num, centers = 4, nstart = 25)
+km <- kmeans(data_num, centers = 3, nstart = 25)
 
 #adding cluster labels to the data set
 superstore$cluster <-factor(km$cluster)

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernard Kilonzo">
-<meta name="dcterms.date" content="2026-11-26">
+<meta name="dcterms.date" content="2026-11-27">
 
 <title>Report &amp; Dashboard Customization</title>
 <style>
@@ -283,7 +283,7 @@ background: #023743;
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">November 26, 2026</p>
+              <p class="date">November 27, 2026</p>
             </div>
           </div>
           
@@ -1267,7 +1267,7 @@ background: #023743;
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>data_num <span class="ot">&lt;-</span>superstore[,<span class="fu">c</span>(<span class="st">"Sales"</span>,<span class="st">"Profit"</span>)]</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#running K-means clustering</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>km <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(data_num, <span class="at">centers =</span> <span class="dv">4</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>km <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(data_num, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#adding cluster labels to the data set</span></span>
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>superstore<span class="sc">$</span>cluster <span class="ot">&lt;-</span><span class="fu">factor</span>(km<span class="sc">$</span>cluster)</span>
